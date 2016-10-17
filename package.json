@@ -1,0 +1,33 @@
+{
+  "name": "gulpset-skeleton",
+  "version": "1.0.0",
+  "description": "Gulp based project skeleton with modular tasks.",
+  "main": "gulpfile.js",
+  "author": "Nobuyuki NISHIGAKI",
+  "license": "MIT",
+  "devDependencies": {
+    "glob": "^7.1.1",
+    "gulp": "^3.9.1",
+    "gulp-task-doc": "^1.0.11",
+    "run-sequence": "^1.2.2"
+  },
+  "dependencies": {},
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nki2/gulpset.git"
+  },
+  "keywords": [
+    "gulp",
+    "skeleton",
+    "modular",
+    "tasks"
+  ],
+  "bugs": {
+    "url": "https://github.com/nki2/gulpset/issues"
+  },
+  "homepage": "https://github.com/nki2/gulpset#readme"
+}

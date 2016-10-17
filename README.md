@@ -1,2 +1,2 @@
 # gulpset
-Gulp based project skeleton with modular tasks
+Gulp based project skeleton with modular tasks.
