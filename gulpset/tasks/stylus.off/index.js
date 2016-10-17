@@ -24,12 +24,12 @@ var nib = require("nib");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var sourcemaps = require("gulp-sourcemaps");
-var assign = require('lodash').assign;
 
 gulpset.tasks.stylus = function(doMinify, browsers, conf) {
 	if(doMinify === undefined) doMinify = false;
 	conf = conf || gulpset.confs.stylus || {};
 	conf.browsers = conf.browsers || ["last 3 versions"];
+	if(browsers) conf.browsers = browsers;
 
 	return gulp.src(conf.src)
 		.pipe(plumber())
