@@ -5,7 +5,12 @@ var glob = require("glob");
 // gulpset
 module.exports = {
 	gulp: gulp,
-	paths: {},
+	paths: {
+		root: "./",
+		src: "./src/",
+		dest: "./build/",
+		docs: "./docs/"
+	},
 	tasks: {},
 	confs: {}
 };
