@@ -18,7 +18,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nki2/gulpset.git"
+    "url": "git+https://github.com/fourdigitdesign/gulpset.git"
   },
   "keywords": [
     "gulp",
@@ -27,7 +27,7 @@
     "tasks"
   ],
   "bugs": {
-    "url": "https://github.com/nki2/gulpset/issues"
+    "url": "https://github.com/fourdigitdesign/gulpset/issues"
   },
-  "homepage": "https://github.com/nki2/gulpset#readme"
+  "homepage": "https://github.com/fourdigitdesign/gulpset#readme"
 }
