@@ -17,7 +17,7 @@ gulpset.confs.jsdoc2md = {
 ///
 var gulp = require("gulp");
 var plumber = require("gulp-plumber");
-var gulpJsdoc2md = require('gulp-jsdoc-to-markdown');
+var gulpJsdoc2md = require("gulp-jsdoc-to-markdown");
 var concat = require("gulp-concat");
 
 gulpset.tasks.jsdoc2md = function(conf) {
