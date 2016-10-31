@@ -2,7 +2,7 @@ var gulpset = require("./../../gulpset");
 
 
 // @verbose
-gulpset.gulp.task("ejs",	function() { return gulpset.tasks.ejs(false); });
+gulpset.gulp.task("ejs",	function() { return gulpset.tasks.ejs(); });
 
 
 gulpset.confs.ejs = {
