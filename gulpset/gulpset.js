@@ -12,6 +12,8 @@
 // imports
 var gulp = require("gulp-task-doc");
 var glob = require("glob");
+var gutil = require("gulp-util");
+
 
 // gulpset
 module.exports = {
@@ -23,7 +25,9 @@ module.exports = {
 		docs: "./docs/"
 	},
 	tasks: {},
-	confs: {}
+	confs: {},
+	syncs: [],
+	stream: function() { return gutil.noop(); }
 };
 
 // load tasks

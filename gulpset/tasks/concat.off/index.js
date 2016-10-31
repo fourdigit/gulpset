@@ -39,7 +39,8 @@ gulpset.tasks.concat = function(doMinify, conf) {
 					.pipe(plumber())
 					.pipe(concat(node.concat))
 					.pipe(gulpif(doMinify === true, uglify()))
-					.pipe(gulp.dest(node.dest));
+					.pipe(gulp.dest(node.dest))
+					.pipe(gulpif(gulpset.sync !== null, gulpset.sync.stream()));
 			})(i)
 		);
 	}

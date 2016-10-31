@@ -23,5 +23,6 @@ gulpset.tasks.copy = function(conf) {
 	return gulp.src(conf.src)
 		.pipe(plumber())
 		.pipe(changed(conf.dest))
-		.pipe(gulp.dest(conf.dest));
+		.pipe(gulp.dest(conf.dest))
+		.pipe(gulpset.stream());
 };

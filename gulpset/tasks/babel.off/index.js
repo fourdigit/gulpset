@@ -85,6 +85,7 @@ gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 				.pipe(gulpif(doMinify === true, uglify()))
 				.pipe(gulpif(doMinify !== true, sourcemaps.write("./")))
 				.pipe(gulp.dest(obj.dest))
+				.pipe(gulpset.stream())
 				.on("end", function() {
 					if(isInitial && onComplete) onComplete();
 				});

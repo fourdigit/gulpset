@@ -39,5 +39,6 @@ gulpset.tasks.sass = function(doMinify, browsers, conf) {
 		.pipe(sass(options).on("error", sass.logError))
 		.pipe(postcss([autoprefixer({browsers: conf.browsers})]))
 		.pipe(gulpif(doMinify !== true, sourcemaps.write("./")))
-		.pipe(gulp.dest(conf.dest));
+		.pipe(gulp.dest(conf.dest))
+		.pipe(gulpset.stream());
 };
