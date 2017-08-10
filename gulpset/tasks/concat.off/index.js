@@ -24,11 +24,13 @@ var gulp = require("gulp");
 var plumber = require("gulp-plumber");
 var gulpif = require("gulp-if");
 var concat = require("gulp-concat");
+var uglify = require("gulp-uglify");
 var stream = require("event-stream");
 
-gulpset.tasks.concat = function(doMinify, conf) {
+gulpset.tasks.concat = function(doMinify, uglifyOptions, conf) {
 	if(doMinify === undefined) doMinify = false;
 	conf = conf || gulpset.confs.concat || {};
+	uglifyOptions = uglifyOptions || {};
 
 	var arr = [];
 	for(var i = 0, iLen = conf.length; i < iLen; i++) {
@@ -37,10 +39,10 @@ gulpset.tasks.concat = function(doMinify, conf) {
 				var node = conf[i];
 				return gulp.src(node.src)
 					.pipe(plumber())
+					.pipe(gulpif(doMinify === true, uglify(uglifyOptions)))
 					.pipe(concat(node.concat))
-					.pipe(gulpif(doMinify === true, uglify()))
 					.pipe(gulp.dest(node.dest))
-					.pipe(gulpif(gulpset.sync !== null, gulpset.sync.stream()));
+					.pipe(gulpset.stream());
 			})(i)
 		);
 	}
