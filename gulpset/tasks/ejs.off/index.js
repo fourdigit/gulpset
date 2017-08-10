@@ -18,6 +18,7 @@ gulpset.confs.ejs = {
 var gulp = require("gulp");
 var plumber = require("gulp-plumber");
 var ejs = require("gulp-ejs");
+var changed = require("gulp-changed");
 
 gulpset.tasks.ejs = function(data, conf) {
 	data = data || gulpset.confs.ejs.data || {};
@@ -25,6 +26,7 @@ gulpset.tasks.ejs = function(data, conf) {
 
 	return gulp.src(conf.src)
 		.pipe(plumber())
+		.pipe(changed(conf.dest))
 		.pipe(ejs(data))
 		.pipe(gulp.dest(conf.dest))
 		.pipe(gulpset.stream());
