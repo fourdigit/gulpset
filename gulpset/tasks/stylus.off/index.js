@@ -42,5 +42,5 @@ gulpset.tasks.stylus = function(doMinify, browsers, conf) {
 		.pipe(postcss([autoprefixer({browsers: conf.browsers})]))
 		.pipe(gulpif(doMinify !== true, sourcemaps.write("./")))
 		.pipe(gulp.dest(conf.dest))
-		.pipe(gulpset.stream());
+		.pipe(gulpset.stream({match: '**/*.css'}));
 };
