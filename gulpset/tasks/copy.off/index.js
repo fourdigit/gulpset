@@ -24,5 +24,5 @@ gulpset.tasks.copy = function(conf) {
 		.pipe(plumber())
 		.pipe(changed(conf.dest))
 		.pipe(gulp.dest(conf.dest))
-		.pipe(gulpset.stream());
+		.pipe(gulpset.stream({match: '**/*.css'}));
 };
