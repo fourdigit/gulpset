@@ -34,6 +34,8 @@ var licensify = require("licensify");
 var uglify = require("gulp-uglify");
 var prettyHrtime = require("pretty-hrtime");
 var assign = require("lodash").assign;
+var optimizejs = require("gulp-optimize-js");
+
 
 gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 	if(doWatch === undefined) doWatch = false;
@@ -49,7 +51,7 @@ gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 					"transform-class-properties",
 					"transform-inline-environment-variables"
 				],
-				presets: ["es2015-loose", "react"]
+				presets: [["es2015", {"loose": true}], "react"]
 			})],
 			extensions: [".js", ".jsx", ".es6"],
 			paths: obj.paths,
@@ -83,10 +85,15 @@ gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 				.pipe(source(obj.file))
 				.pipe(buffer())
 				.pipe(gulpif(doMinify !== true, sourcemaps.init({loadMaps: true})))
-				.pipe(gulpif(doMinify === true, uglify()))
+				.pipe(gulpif(doMinify === true, uglify({
+					compress: {
+						negate_iife: false
+					}
+				})))
+				.pipe(gulpif(doMinify === true, optimizejs()))
 				.pipe(gulpif(doMinify !== true, sourcemaps.write("./")))
 				.pipe(gulp.dest(obj.dest))
-				.pipe(gulpset.stream())
+				//.pipe(gulpset.stream()) // TODO: fix this
 				.on("end", function() {
 					if(isInitial && onComplete) onComplete();
 				});
@@ -103,7 +110,9 @@ gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 	var complete = 0;
 	for(var i = 0, iLen = conf.length; i < iLen; i++) {
 		babel(conf[i], doWatch, function() {
-			if(++complete >= iLen) cb();
+			if(++complete >= iLen) {
+				cb();
+			}
 		});
 	}
 };
