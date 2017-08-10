@@ -22,6 +22,6 @@ gulpset.tasks.imagemin = function(conf) {
 	conf = conf || gulpset.confs.imagemin || {};
 	return gulp.src(conf.src)
 		.pipe(plumber())
-		.pipe(imagemin())
+		.pipe(imagemin({ plugins: [imagemin.gifsicle(), imagemin.jpegtran(), imagemin.optipng()] }))
 		.pipe(gulp.dest(conf.dest));
 };
