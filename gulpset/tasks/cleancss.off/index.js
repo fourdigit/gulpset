@@ -23,8 +23,9 @@ var cleancss = require("gulp-clean-css");
 var postcss = require("gulp-postcss");
 var autoprefixer = require("autoprefixer");
 var sourcemaps = require("gulp-sourcemaps");
+var rename = require("gulp-rename");
 
-gulpset.tasks.cleancss = function(doMinify, browsers, conf) {
+gulpset.tasks.cleancss = function(doMinify, browsers, renameRule, conf) {
 	if(doMinify === undefined) doMinify = false;
 	conf = conf || gulpset.confs.cleancss || {};
 	conf.browsers = conf.browsers || ["last 3 versions"];
@@ -39,6 +40,7 @@ gulpset.tasks.cleancss = function(doMinify, browsers, conf) {
 		.pipe(cleancss())
 		.pipe(postcss([autoprefixer({browsers: conf.browsers})]))
 		.pipe(gulpif(doMinify !== true, sourcemaps.write("./")))
+		.pipe(gulpif(renameRule !== undefined, rename(renameRule)))
 		.pipe(gulp.dest(conf.dest))
 		.pipe(gulpset.stream({match: "**/*.css"}));
 };
