@@ -36,7 +36,8 @@ gulpset.tasks.stylus = function(doMinify, browsers, conf) {
 		.pipe(gulpif(doMinify !== true, sourcemaps.init()))
 		.pipe(stylus({
 			compress: doMinify,
-			use: [nib()]
+			use: [nib()],
+			"include css": true
 		}))
 		.pipe(postcss([autoprefixer({browsers: conf.browsers})]))
 		.pipe(gulpif(doMinify !== true, sourcemaps.write("./")))
