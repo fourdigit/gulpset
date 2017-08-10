@@ -74,6 +74,7 @@ gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 						console.log(err.codeFrame);
 						console.log("-------------------------");
 					}
+					if(isInitial && onComplete) onComplete();
 				} else {
 					gutil.log("Finished", "'" + gutil.colors.cyan("browserify") + "'", "file " + gutil.colors.magenta(obj.file), "after", gutil.colors.magenta(elapsedTime));
 				}
