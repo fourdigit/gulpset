@@ -6,8 +6,8 @@ gulpset.gulp.task("watch",	function(cb) { gulpset.tasks.watch(cb); });
 
 
 gulpset.confs.watch = [{
-	watch: gulpset.confs.eslint.src,
-	run: ["eslint"]
+	watch: "",
+	run: [""]
 }];
 
 
