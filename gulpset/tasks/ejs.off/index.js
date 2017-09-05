@@ -6,9 +6,8 @@ gulpset.gulp.task("ejs",	function() { return gulpset.tasks.ejs(); });
 
 
 gulpset.confs.ejs = {
-	src: [gulpset.paths.src + "**/*.html"],
-	dest: gulpset.paths.dest,
-	data: {}
+	src: [gulpset.paths.src + "**/*.ejs"],
+	dest: gulpset.paths.dest
 };
 
 
@@ -27,7 +26,12 @@ gulpset.tasks.ejs = function(data, conf) {
 	return gulp.src(conf.src)
 		.pipe(plumber())
 		.pipe(changed(conf.dest))
-		.pipe(ejs(data))
+		.pipe(ejs({}, {
+			root: process.cwd() + gulpset.paths.src,
+		}, {
+				ext: '.html'
+			}
+		))
 		.pipe(gulp.dest(conf.dest))
 		.pipe(gulpset.stream());
 };
