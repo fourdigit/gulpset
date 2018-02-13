@@ -75,7 +75,21 @@ gulpset.confs.watch = [{
 
 
 ### 5. npm install
-プロジェクトルートで、`yarn auto-install`をします。
+1. auto-install がグローバルにインストールされていない場合 `yarn global add auto-install` を実行する
+2. プロジェクトルートで、`yarn auto-install`をします。
 
 ### 6. 起動
-プロジェクトルートで、`gulp dev`と入力するとタスクが起動されます。
+1. `gulpfile.js`に、実行するタスクを定義します。
+
+`
+gulpset.gulp.task("dev", function(cb) {
+	runSequence(
+		["babel", "cleancss", …], ← ここ
+		"watch",
+		"browsersync",
+		cb
+	);
+});
+`
+
+2. `gulp dev` すると上述したタスクが実行されます。
