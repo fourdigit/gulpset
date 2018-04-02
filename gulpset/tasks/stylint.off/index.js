@@ -1,26 +1,22 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("stylint",			function() { return gulpset.tasks.stylint(); });
-
+gulpset.gulp.task('stylint', () => stylint());
 
 gulpset.confs.stylint = {
-	src: [gulpset.paths.src + "**/*.styl"]
+	src: [gulpset.paths.src + '**/*.styl']
 };
 
+//---------------------------------------------------------------------------
+//
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
 
-
-//----------------------------------------------------------------------------------------------------
-///
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var stylint = require('gulp-stylint');
-
-gulpset.tasks.stylint = function(conf) {
-	conf = conf || gulpset.confs.stylint || {};
-	return gulp.src(conf.src)
-		.pipe(plumber())
-		.pipe(stylint())
-		.pipe(stylint.reporter());
+const stylint = conf => {
+	const config = conf || gulpset.confs.stylint || {};
+	return gulp
+		.src(config.src)
+		.pipe($.plumber())
+		.pipe($.stylint())
+		.pipe($.stylint.reporter());
 };

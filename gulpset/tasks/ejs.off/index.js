@@ -1,33 +1,36 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("ejs",	function() { return gulpset.tasks.ejs(); });
-
+gulpset.gulp.task('ejs', () => ejs());
 
 gulpset.confs.ejs = {
-	src: [gulpset.paths.src + "**/*.html"],
+	src: [gulpset.paths.src + '**/*.ejs'],
 	dest: gulpset.paths.dest,
-	data: {}
+	data: {},
+	options: {
+		root: process.cwd()
+	},
+	settings: {
+		ext: '.html'
+	}
 };
-
-
 
 //----------------------------------------------------------------------------------------------------
 ///
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var ejs = require("gulp-ejs");
-var changed = require("gulp-changed");
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
 
-gulpset.tasks.ejs = function(data, conf) {
+const ejs = (data, options, settings, conf) => {
 	data = data || gulpset.confs.ejs.data || {};
+	options = options || gulpset.confs.ejs.options || {};
+	settings = settings || gulpset.confs.ejs.settings || {};
 	conf = conf || gulpset.confs.ejs || {};
 
-	return gulp.src(conf.src)
-		.pipe(plumber())
-		.pipe(changed(conf.dest))
-		.pipe(ejs(data))
+	return gulp
+		.src(conf.src)
+		.pipe($.plumber())
+		.pipe($.changed(conf.dest))
+		.pipe($.ejs(data, options, settings))
 		.pipe(gulp.dest(conf.dest))
 		.pipe(gulpset.stream());
 };

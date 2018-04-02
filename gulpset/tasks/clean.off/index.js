@@ -1,16 +1,13 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("clean",	function() { return gulpset.tasks.clean(); });
+gulpset.gulp.task('clean', () => clean());
 
+//---------------------------------------------------------------------
+//
+const del = require('del');
 
-
-//----------------------------------------------------------------------------------------------------
-///
-var del = require("del");
-
-gulpset.tasks.clean = function(path) {
+const clean = path => {
 	path = path || gulpset.paths.dest;
 	return del(path);
 };

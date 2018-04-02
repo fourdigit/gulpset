@@ -1,27 +1,31 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("imagemin",	function() { return gulpset.tasks.imagemin(); });
-
+gulpset.gulp.task('imagemin', () => imagemin());
 
 gulpset.confs.imagemin = {
-	src: [gulpset.paths.src + "**/*.{png,jpg,gif,svg}"],
+	src: [gulpset.paths.src + '**/*.{png,jpg,gif,svg}'],
 	dest: gulpset.paths.dest
 };
 
-
-
 //----------------------------------------------------------------------------------------------------
 ///
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var imagemin = require("gulp-imagemin");
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
 
-gulpset.tasks.imagemin = function(conf) {
+const imagemin = conf => {
 	conf = conf || gulpset.confs.imagemin || {};
-	return gulp.src(conf.src)
-		.pipe(plumber())
-		.pipe(imagemin({ plugins: [imagemin.gifsicle(), imagemin.jpegtran(), imagemin.optipng()] }))
+	return gulp
+		.src(conf.src)
+		.pipe($.plumber())
+		.pipe(
+			$.imagemin({
+				plugins: [
+					imagemin.gifsicle(),
+					imagemin.jpegtran(),
+					imagemin.optipng()
+				]
+			})
+		)
 		.pipe(gulp.dest(conf.dest));
 };

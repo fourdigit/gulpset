@@ -1,9 +1,9 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("browsersync",	function(cb) { gulpset.tasks.browsersync(cb); });
-
+gulpset.gulp.task('browsersync', function(cb) {
+	gulpset.tasks.browsersync(cb);
+});
 
 gulpset.confs.browsersync = {
 	port: 3000,
@@ -11,20 +11,18 @@ gulpset.confs.browsersync = {
 		baseDir: gulpset.paths.dest,
 		directory: true
 	},
-	startPath: "/",
+	startPath: '/',
 	ghostMode: false
 };
 
-
-
 //----------------------------------------------------------------------------------------------------
 ///
-var sync = require("browser-sync");
-var gutil = require("gulp-util");
+const sync = require('browser-sync');
+const gutil = require('gulp-util');
 
-gulpset.tasks.browsersync = function(cb, conf) {
+const browsersync = function(cb, conf) {
 	conf = conf || gulpset.confs.browsersync || {};
-	if(!Array.isArray(conf)) conf = [conf];
+	if (!Array.isArray(conf)) conf = [conf];
 
 	conf.forEach(function(conf) {
 		var bs = sync.create();

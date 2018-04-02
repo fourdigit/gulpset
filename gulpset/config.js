@@ -1,1 +1,1 @@
-var gulpset = require("./gulpset");
+const gulpset = require('./gulpset');

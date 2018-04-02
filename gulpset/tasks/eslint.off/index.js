@@ -1,26 +1,22 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("eslint",	function() { return gulpset.tasks.eslint(); });
-
+gulpset.gulp.task('eslint', () => eslint());
 
 gulpset.confs.eslint = {
-	src: [gulpset.paths.src + "**/*.jsx"]
+	src: [gulpset.paths.src + '**/*.jsx']
 };
 
+//--------------------------------------------------------
+//
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
 
-
-//----------------------------------------------------------------------------------------------------
-///
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var eslint = require("gulp-eslint");
-
-gulpset.tasks.eslint = function(conf) {
-	conf = conf || gulpset.confs.eslint || {};
-	return gulp.src(conf.src)
-		.pipe(plumber())
-		.pipe(eslint())
-		.pipe(eslint.format());
+const eslint = conf => {
+	const config = conf || gulpset.confs.eslint || {};
+	return gulp
+		.src(config.src)
+		.pipe($.plumber())
+		.pipe($.eslint())
+		.pipe($.eslint.format());
 };

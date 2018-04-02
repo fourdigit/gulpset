@@ -1,46 +1,57 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("stylus",			function() { return gulpset.tasks.stylus(false); });
+gulpset.gulp.task('stylus', () => stylus(false));
 // @verbose
-gulpset.gulp.task("stylus-minify",	function() { return gulpset.tasks.stylus(true); });
-
+gulpset.gulp.task('stylus-minify', () => stylus(true));
+// @verbose
+gulpset.gulp.task('styleguide-theme', () => styleguideTheme());
 
 gulpset.confs.stylus = {
-	src: [gulpset.paths.src + "**/!(_)*.styl"],
+	src: [gulpset.paths.src + '**/!(_)*.styl'],
 	dest: gulpset.paths.dest
 };
 
+//---------------------------------------------------------------------------
+//
+const gulp = require('gulp');
+const $ = require('gulp-load-plugins')();
+const autoprefixer = require('autoprefixer');
 
-
-//----------------------------------------------------------------------------------------------------
-///
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var gulpif = require("gulp-if");
-var stylus = require("gulp-stylus");
-var nib = require("nib");
-var postcss = require("gulp-postcss");
-var autoprefixer = require("autoprefixer");
-var sourcemaps = require("gulp-sourcemaps");
-
-gulpset.tasks.stylus = function(doMinify, browsers, conf) {
-	if(doMinify === undefined) doMinify = false;
+const stylus = (doMinify, browsers, conf) => {
+	if (doMinify === undefined) doMinify = false;
 	conf = conf || gulpset.confs.stylus || {};
-	conf.browsers = conf.browsers || ["last 3 versions"];
-	if(browsers) conf.browsers = browsers;
+	conf.browsers = conf.browsers || ['last 3 versions'];
+	if (browsers) conf.browsers = browsers;
 
-	return gulp.src(conf.src)
-		.pipe(plumber())
-		.pipe(gulpif(doMinify !== true, sourcemaps.init()))
-		.pipe(stylus({
-			compress: doMinify,
-			use: [nib()],
-			"include css": true
-		}))
-		.pipe(postcss([autoprefixer({browsers: conf.browsers})]))
-		.pipe(gulpif(doMinify !== true, sourcemaps.write("./")))
+	return gulp
+		.src(conf.entry)
+		.pipe($.plumber())
+		.pipe($.if(doMinify !== true, $.sourcemaps.init()))
+		.pipe(
+			$.stylus({
+				'include css': true
+			})
+		)
+		.pipe(
+			$.postcss([
+				autoprefixer({
+					browsers: conf.browsers
+				})
+			])
+		)
+		.pipe($.if(doMinify !== true, $.sourcemaps.write('./')))
 		.pipe(gulp.dest(conf.dest))
-		.pipe(gulpset.stream({match: '**/*.css'}));
+		.pipe(gulpset.stream());
+};
+
+const styleguideTheme = conf => {
+	conf = conf || gulpset.confs.styleguideTheme || {};
+
+	return gulp
+		.src(conf.src)
+		.pipe($.plumber())
+		.pipe($.stylus())
+		.pipe(gulp.dest(conf.dest))
+		.pipe(gulpset.stream());
 };
