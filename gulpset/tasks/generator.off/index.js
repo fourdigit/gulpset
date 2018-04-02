@@ -11,11 +11,9 @@ gulpset.confs.generator = {
 ///
 const fs = require('fs');
 const gulp = require('gulp');
-const plumber = require('gulp-plumber');
-const template = require('gulp-template');
+const $ = require('gulp-load-plugins')();
 const iconv = require('iconv-lite');
 const csv = require('fast-csv');
-const rename = require('gulp-rename');
 
 const generator = (cb, conf) => {
 	conf = conf || gulpset.confs.generator || {};
@@ -47,9 +45,9 @@ const generator = (cb, conf) => {
 			delete data.destination;
 			gulp
 				.src(tmpl)
-				.pipe(plumber())
-				.pipe(template(data, options))
-				.pipe(rename(dest))
+				.pipe($.plumber())
+				.pipe($.template(data, options))
+				.pipe($.rename(dest))
 				.pipe(gulp.dest('./'));
 		})
 		.on('end', () => {

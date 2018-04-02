@@ -1,33 +1,36 @@
 {
-  "name": "gulpset-skeleton",
-  "version": "1.0.0",
-  "description": "Gulp based project skeleton with modular tasks.",
-  "main": "gulpfile.js",
-  "author": "Nobuyuki NISHIGAKI",
-  "license": "MIT",
-  "devDependencies": {
-    "glob": "^7.1.1",
-    "gulp": "^4.0.0",
-    "gulp-task-doc": "^1.0.11",
-    "run-sequence": "^1.2.2"
-  },
-  "dependencies": {},
-  "directories": {
-    "doc": "docs"
-  },
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/fourdigitdesign/gulpset.git"
-  },
-  "keywords": [
-    "gulp",
-    "skeleton",
-    "modular",
-    "tasks"
-  ],
-  "bugs": {
-    "url": "https://github.com/fourdigitdesign/gulpset/issues"
-  },
-  "homepage": "https://github.com/fourdigitdesign/gulpset#readme"
+	"name": "gulpset-skeleton",
+	"version": "1.0.0",
+	"description": "Gulp based project skeleton with modular tasks.",
+	"main": "gulpfile.js",
+	"author": "Nobuyuki NISHIGAKI",
+	"license": "MIT",
+	"devDependencies": {
+		"glob": "^7.1.1",
+		"gulp": "^4.0.0",
+		"gulp-load-plugins": "^1.5.0",
+		"gulp-task-doc": "^1.0.11",
+		"prettier-eslint": "^8.8.1",
+		"prettier-eslint-cli": "^4.7.1"
+	},
+	"dependencies": {
+		"auto-install": "^1.7.4"
+	},
+	"directories": {
+		"doc": "docs"
+	},
+	"scripts": {
+		"start": "gulp dev",
+		"build": "gulp build",
+		"format": "prettier-eslint --write 'src/**/*.js'"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/fourdigitdesign/gulpset.git"
+	},
+	"keywords": ["gulp", "skeleton", "modular", "tasks"],
+	"bugs": {
+		"url": "https://github.com/fourdigitdesign/gulpset/issues"
+	},
+	"homepage": "https://github.com/fourdigitdesign/gulpset#readme"
 }

@@ -7,7 +7,6 @@ gulpset.gulp.task('docs', () => docs());
 //
 const gulp = require('gulp');
 const frontMatter = require('gulp-front-matter');
-const layout = require('gulp-layout');
 const $ = require('gulp-load-plugins')();
 
 const docs = conf => {
@@ -20,7 +19,7 @@ const docs = conf => {
 			})
 		)
 		.pipe($.markdown())
-		.pipe(layout(file => file.frontMatter))
+		.pipe($.layout(file => file.frontMatter))
 		.pipe(gulp.dest(config.dest))
 		.pipe(gulpset.stream());
 };
