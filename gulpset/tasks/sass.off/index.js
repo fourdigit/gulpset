@@ -7,7 +7,7 @@ gulpset.gulp.task('sass', () => sass(false));
 gulpset.gulp.task('sass-minify', () => sass(true));
 
 gulpset.confs.sass = {
-	src: [gulpset.paths.src + '**/*.{scss,sass}'],
+	src: [`${gulpset.paths.src}**/*.{scss,sass}`],
 	dest: gulpset.paths.dest
 };
 

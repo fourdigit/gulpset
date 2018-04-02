@@ -4,8 +4,8 @@ const gulpset = require('./../../gulpset');
 gulpset.gulp.task('jsdoc2md', () => jsdoc2md());
 
 gulpset.confs.jsdoc2md = {
-	src: [gulpset.paths.src + '**/*.jsx'],
-	dest: gulpset.paths.docs + 'jsdoc/',
+	src: [`${gulpset.paths.src}**/*.jsx`],
+	dest: `${gulpset.paths.docs}jsdoc/`,
 	destFile: 'doc.md'
 };
 

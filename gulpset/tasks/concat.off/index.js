@@ -8,11 +8,11 @@ gulpset.gulp.task('concat-minify', () => concat(true));
 
 gulpset.confs.concat = [
 	{
-		dest: gulpset.paths.dest + 'js/',
+		dest: `${gulpset.paths.dest}js/`,
 		concat: 'concat.js',
 		src: [
-			gulpset.paths.src + 'js/source1.js',
-			gulpset.paths.src + 'js/source2.js'
+			`${gulpset.paths.src}js/source1.js`,
+			`${gulpset.paths.src}js/source2.js`
 		]
 	}
 ];

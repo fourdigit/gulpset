@@ -8,7 +8,7 @@ gulpset.gulp.task('stylus-minify', () => stylus(true));
 gulpset.gulp.task('styleguide-theme', () => styleguideTheme());
 
 gulpset.confs.stylus = {
-	src: [gulpset.paths.src + '**/!(_)*.styl'],
+	src: [`${gulpset.paths.src}**/!(_)*.styl`],
 	dest: gulpset.paths.dest
 };
 

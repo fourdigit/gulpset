@@ -4,7 +4,7 @@ const gulpset = require('./../../gulpset');
 gulpset.gulp.task('eslint', () => eslint());
 
 gulpset.confs.eslint = {
-	src: [gulpset.paths.src + '**/*.jsx']
+	src: [`${gulpset.paths.src}**/*.jsx`]
 };
 
 //--------------------------------------------------------

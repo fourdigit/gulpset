@@ -7,7 +7,7 @@ gulpset.gulp.task('cleancss', () => cleancss(false));
 gulpset.gulp.task('cleancss-minify', () => cleancss(true));
 
 gulpset.confs.cleancss = {
-	src: [gulpset.paths.src + '**/*.css'],
+	src: [`${gulpset.paths.src}**/*.css`],
 	dest: gulpset.paths.dest
 };
 

@@ -4,8 +4,8 @@ const gulpset = require('./../../gulpset');
 gulpset.gulp.task('jsdoc', () => jsdoc());
 
 gulpset.confs.jsdoc = {
-	src: [gulpset.paths.src + '**/*.jsx'],
-	dest: gulpset.paths.docs + 'jsdoc/'
+	src: [`${gulpset.paths.src}**/*.jsx`],
+	dest: `${gulpset.paths.docs}jsdoc/`
 };
 
 //----------------------------------------------------------------------------------------------------

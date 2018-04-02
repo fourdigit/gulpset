@@ -4,7 +4,7 @@ const gulpset = require('./../../gulpset');
 gulpset.gulp.task('ejs', () => ejs());
 
 gulpset.confs.ejs = {
-	src: [gulpset.paths.src + '**/*.ejs'],
+	src: [`${gulpset.paths.src}**/*.ejs`],
 	dest: gulpset.paths.dest,
 	data: {},
 	options: {

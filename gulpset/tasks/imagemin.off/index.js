@@ -4,7 +4,7 @@ const gulpset = require('./../../gulpset');
 gulpset.gulp.task('imagemin', () => imagemin());
 
 gulpset.confs.imagemin = {
-	src: [gulpset.paths.src + '**/*.{png,jpg,gif,svg}'],
+	src: [`${gulpset.paths.src}**/*.{png,jpg,gif,svg}`],
 	dest: gulpset.paths.dest
 };
 

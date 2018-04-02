@@ -1,23 +1,19 @@
 var gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task('babel', function(cb) {
-	gulpset.tasks.babel(cb);
-});
+gulpset.gulp.task('babel', cb => babel(cb));
+
 // @verbose
-gulpset.gulp.task('babel-watch', function(cb) {
-	gulpset.tasks.babel(cb, true, false);
-});
+gulpset.gulp.task('babel-watch', cb => babel(cb, true, false));
+
 // @verbose
-gulpset.gulp.task('babel-minify', function(cb) {
-	gulpset.tasks.babel(cb, false, true);
-});
+gulpset.gulp.task('babel-minify', cb => babel(cb, false, true));
 
 gulpset.confs.babel = [
 	{
-		src: gulpset.paths.src + 'js/source.jsx',
-		paths: ['./node_modules', gulpset.paths.src + 'js'],
-		dest: gulpset.paths.dest + 'assets/app/js/',
+		src: `${gulpset.paths.src}js/source.jsx`,
+		paths: ['./node_modules', `${gulpset.paths.src}js`],
+		dest: `${gulpset.paths.dest}assets/app/js/`,
 		file: 'dest.js'
 	}
 ];
@@ -40,13 +36,13 @@ var prettyHrtime = require('pretty-hrtime');
 var assign = require('lodash').assign;
 var optimizejs = require('gulp-optimize-js');
 
-gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
+gulpset.tasks.babel = (cb, doWatch, doMinify, doLicensify, conf) => {
 	if (doWatch === undefined) doWatch = false;
 	if (doMinify === undefined) doMinify = false;
 	if (doLicensify === undefined) doLicensify = false;
 	conf = conf || gulpset.confs.babel || {};
 
-	var babel = function(obj, doWatch, onFirstBuild) {
+	var babel = (obj, doWatch, onFirstBuild) => {
 		var browserifyOpts = {
 			entries: [obj.src],
 			transform: [
@@ -67,7 +63,7 @@ gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 		if (doWatch) browserifyOpts = assign({}, watchify.args, browserifyOpts);
 
 		var b = browserify(browserifyOpts);
-		var compile = function(isInitial, onComplete) {
+		var compile = (isInitial, onComplete) => {
 			isInitial = isInitial === true;
 			gutil.log(
 				'Starting',
@@ -78,7 +74,7 @@ gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 			var startTime = process.hrtime();
 			return (
 				b
-					.bundle(function(err) {
+					.bundle(err => {
 						var elapsedTime = prettyHrtime(
 							process.hrtime(startTime)
 						);
@@ -129,14 +125,14 @@ gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 					.pipe(gulpif(doMinify !== true, sourcemaps.write('./')))
 					.pipe(gulp.dest(obj.dest))
 					//.pipe(gulpset.stream()) // TODO: fix this
-					.on('end', function() {
+					.on('end', () => {
 						if (isInitial && onComplete) onComplete();
 					})
 			);
 		};
 		if (doWatch) {
 			b = watchify(b);
-			b.on('update', function(id) {
+			b.on('update', id => {
 				gutil.log('Browserify update: ' + id);
 				compile(false);
 			});
@@ -145,7 +141,7 @@ gulpset.tasks.babel = function(cb, doWatch, doMinify, doLicensify, conf) {
 	};
 	var complete = 0;
 	for (var i = 0, iLen = conf.length; i < iLen; i++) {
-		babel(conf[i], doWatch, function() {
+		babel(conf[i], doWatch, () => {
 			if (++complete >= iLen) {
 				cb();
 			}

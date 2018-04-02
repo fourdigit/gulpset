@@ -4,7 +4,7 @@ const gulpset = require('./../../gulpset');
 gulpset.gulp.task('stylint', () => stylint());
 
 gulpset.confs.stylint = {
-	src: [gulpset.paths.src + '**/*.styl']
+	src: [`${gulpset.paths.src}**/*.styl`]
 };
 
 //---------------------------------------------------------------------------

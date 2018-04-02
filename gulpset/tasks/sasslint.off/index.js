@@ -5,7 +5,7 @@ gulpset.gulp.task('sasslint', () => sasslint());
 
 gulpset.confs.sasslint = {
 	config: './.sass-lint.yml',
-	src: [gulpset.paths.src + '**/*.{scss,sass}']
+	src: [`${gulpset.paths.src}**/*.{scss,sass}`]
 };
 
 //----------------------------------------------------------------------------------------------------
