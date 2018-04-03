@@ -1,7 +1,7 @@
 {
-  "singleQuote": true,
-  "sourceType": "module",
-  "ecmaFeatures": {
-    "modules": true
-  }
+	"singleQuote": true,
+	"sourceType": "module",
+	"ecmaFeatures": {
+		"modules": true
+	}
 }

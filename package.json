@@ -17,8 +17,7 @@
 	},
 	"scripts": {
 		"start": "webpack --watch & cross-env NODE_ENV=development gulp dev",
-		"build": "cross-env NODE_ENV=production gulp build && webpack",
-		"format": "prettier-eslint --write 'src/**/*.js'"
+		"build": "cross-env NODE_ENV=production gulp build && webpack"
 	},
 	"repository": {
 		"type": "git",
