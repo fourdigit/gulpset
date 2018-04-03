@@ -1,7 +1,7 @@
 const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task('imagemin', () => imagemin());
+gulpset.gulp.task('imagemin', () => image());
 
 gulpset.confs.imagemin = {
 	src: [`${gulpset.paths.src}**/*.{png,jpg,gif,svg}`],
@@ -12,19 +12,16 @@ gulpset.confs.imagemin = {
 ///
 const gulp = require('gulp');
 const $ = require('gulp-load-plugins')();
+const imagemin = require('gulp-imagemin');
 
-const imagemin = conf => {
+const image = conf => {
 	conf = conf || gulpset.confs.imagemin || {};
 	return gulp
 		.src(conf.src)
 		.pipe($.plumber())
 		.pipe(
-			$.imagemin({
-				plugins: [
-					imagemin.gifsicle(),
-					imagemin.jpegtran(),
-					imagemin.optipng()
-				]
+			imagemin({
+				plugins: [imagemin.gifsicle(), imagemin.jpegtran(), imagemin.optipng()]
 			})
 		)
 		.pipe(gulp.dest(conf.dest));

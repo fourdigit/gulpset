@@ -1,18 +1,5 @@
 {
-	"extends": ["eslint-config-airbnb-base", "plugin:prettier/recommended"],
-	"rules": {
-		"comma-dangle": [2, "never"],
-		"semi": [2, "never"],
-		"linebreak-style": [0, "unix"],
-		"import/no-extraneous-dependencies": [
-			"error",
-			{
-				"devDependencies": true,
-				"optionalDependencies": false,
-				"peerDependencies": false
-			}
-		]
-	},
+	"extends": ["plugin:prettier/recommended"],
 	"globals": {
 		"document": true,
 		"$": true,

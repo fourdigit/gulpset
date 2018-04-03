@@ -6,16 +6,12 @@ const gulpset = require('./gulpset/gulpset');
 gulpset.gulp.task(
 	'dev',
 	gulpset.gulp.series(
-		'clean',
 		gulpset.gulp.parallel(
 			'copy',
-			'eslint',
 			'stylint',
-			'babel-watch',
 			'imagemin',
 			'stylus',
 			'pug',
-			'styleguide',
 			'styleguide-theme',
 			'docs'
 		),
@@ -30,13 +26,10 @@ gulpset.gulp.task(
 		'clean',
 		gulpset.gulp.parallel(
 			'copy',
-			'eslint',
 			'stylint',
-			'babel',
 			'imagemin',
 			'stylus-minify',
 			'pug',
-			'styleguide',
 			'styleguide-theme',
 			'docs'
 		)
