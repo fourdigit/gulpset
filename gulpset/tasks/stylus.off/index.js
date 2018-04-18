@@ -1,57 +1,39 @@
-const gulpset = require('./../../gulpset');
+const gulpset = require("./../../gulpset");
+const gulp = require("gulp");
+const $ = require("gulp-load-plugins")();
+const autoprefixer = require("autoprefixer");
 
-// @verbose
-gulpset.gulp.task('stylus', () => stylus(false));
-// @verbose
-gulpset.gulp.task('stylus-minify', () => stylus(true));
-// @verbose
-gulpset.gulp.task('styleguide-theme', () => styleguideTheme());
+/**
+ * yarn add gulp-plumber gulp-stylus gulp-if autoprefixer gulp-sourcemaps gulp-postcss --dev
+ */
 
 gulpset.confs.stylus = {
-	src: [`${gulpset.paths.src}**/!(_)*.styl`],
-	dest: gulpset.paths.dest
+  entry: [`${gulpset.paths.src}**/*.styl`],
+  src: [`${gulpset.paths.src}**/!(_)*.styl`],
+  dest: gulpset.paths.dest
 };
-
-//---------------------------------------------------------------------------
-//
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')();
-const autoprefixer = require('autoprefixer');
 
 const stylus = (doMinify, browsers, conf) => {
-	if (doMinify === undefined) doMinify = false;
-	conf = conf || gulpset.confs.stylus || {};
-	conf.browsers = conf.browsers || ['last 3 versions'];
-	if (browsers) conf.browsers = browsers;
+  if (doMinify === undefined) doMinify = false;
+  conf = conf || gulpset.confs.stylus || {};
 
-	return gulp
-		.src(conf.entry)
-		.pipe($.plumber())
-		.pipe($.if(doMinify !== true, $.sourcemaps.init()))
-		.pipe(
-			$.stylus({
-				'include css': true
-			})
-		)
-		.pipe(
-			$.postcss([
-				autoprefixer({
-					browsers: conf.browsers
-				})
-			])
-		)
-		.pipe($.if(doMinify !== true, $.sourcemaps.write('./')))
-		.pipe(gulp.dest(conf.dest))
-		.pipe(gulpset.stream());
+  return gulp
+    .src(conf.entry)
+    .pipe($.plumber())
+    .pipe($.if(doMinify !== true, $.sourcemaps.init()))
+    .pipe(
+      $.stylus({
+        "include css": true
+      })
+    )
+    .pipe($.postcss([autoprefixer()]))
+    .pipe($.if(doMinify !== true, $.sourcemaps.write("./")))
+    .pipe(gulp.dest(conf.dest))
+    .pipe(gulpset.stream());
 };
 
-const styleguideTheme = conf => {
-	conf = conf || gulpset.confs.styleguideTheme || {};
+// @verbose
+gulpset.gulp.task("stylus", () => stylus(false));
 
-	return gulp
-		.src(conf.src)
-		.pipe($.plumber())
-		.pipe($.stylus())
-		.pipe(gulp.dest(conf.dest))
-		.pipe(gulpset.stream());
-};
+// @verbose
+gulpset.gulp.task("stylus-minify", () => stylus(true));

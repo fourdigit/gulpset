@@ -1,22 +1,23 @@
-const gulpset = require('./../../gulpset');
+const gulpset = require("./../../gulpset");
+const gulp = require("gulp");
+const $ = require("gulp-load-plugins")();
 
-// @verbose
-gulpset.gulp.task('stylint', () => stylint());
+/**
+ * yarn add gulp-plumber gulp-stylint
+ */
 
 gulpset.confs.stylint = {
-	src: [`${gulpset.paths.src}**/*.styl`]
+  src: [`${gulpset.paths.src}**/*.styl`]
 };
-
-//---------------------------------------------------------------------------
-//
-const gulp = require('gulp');
-const $ = require('gulp-load-plugins')();
 
 const stylint = conf => {
-	const config = conf || gulpset.confs.stylint || {};
-	return gulp
-		.src(config.src)
-		.pipe($.plumber())
-		.pipe($.stylint())
-		.pipe($.stylint.reporter());
+  const config = conf || gulpset.confs.stylint || {};
+  return gulp
+    .src(config.src)
+    .pipe($.plumber())
+    .pipe($.stylint())
+    .pipe($.stylint.reporter());
 };
+
+// @verbose
+gulpset.gulp.task("stylint", () => stylint());

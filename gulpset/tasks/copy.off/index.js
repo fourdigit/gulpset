@@ -1,28 +1,29 @@
-const gulpset = require('./../../gulpset');
+const gulpset = require("./../../gulpset");
+const gulp = require("gulp");
+const $ = require("gulp-load-plugins")();
 
-// @verbose
-gulpset.gulp.task('copy', () => copy());
+/**
+ * yarn add gulp-plumber gulp-changed --dev
+ */
 
 gulpset.confs.copy = {
-	src: [
-		`${
-			gulpset.paths.src
-		}**/*.{html,htm,css,js,ico,json,xml,woff,woff2,ttf,eot,mp4,webm,jpeg,jpg,gif,png,svg,map,mp3}`
-	],
-	dest: gulpset.paths.dest
+  src: [
+    `${
+      gulpset.paths.src
+    }**/*.{html,htm,css,js,ico,json,xml,woff,woff2,ttf,eot,mp4,webm,jpeg,jpg,gif,png,svg,map,mp3}`
+  ],
+  dest: gulpset.paths.dest
 };
-
-//----------------------------------------------------------------------------------------------------
-///
-var gulp = require('gulp');
-const $ = require('gulp-load-plugins')();
 
 const copy = conf => {
-	conf = conf || gulpset.confs.copy || {};
-	return gulp
-		.src(conf.src)
-		.pipe($.plumber())
-		.pipe($.changed(conf.dest))
-		.pipe(gulp.dest(conf.dest))
-		.pipe(gulpset.stream({ match: '**/*.css' }));
+  conf = conf || gulpset.confs.copy || {};
+  return gulp
+    .src(conf.src)
+    .pipe($.plumber())
+    .pipe($.changed(conf.dest))
+    .pipe(gulp.dest(conf.dest))
+    .pipe(gulpset.stream({ match: "**/*.css" }));
 };
+
+// @verbose
+gulpset.gulp.task("copy", () => copy());
