@@ -3,7 +3,7 @@ const sync = require("browser-sync");
 const gutil = require("gulp-util");
 
 /**
- * yarn add browser-sync gulp-util
+ * yarn add browser-sync gulp-util --dev
  */
 
 gulpset.confs.browsersync = {

@@ -6,7 +6,7 @@ const $ = require("gulp-load-plugins")();
 const imagemin = require("gulp-imagemin");
 
 /**
- * yarn add gulp-plumber gulp-imagemin --dev
+ * yarn add gulp-imagemin --dev
  */
 
 gulpset.confs.imagemin = {

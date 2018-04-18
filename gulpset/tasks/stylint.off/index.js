@@ -3,7 +3,7 @@ const gulp = require("gulp");
 const $ = require("gulp-load-plugins")();
 
 /**
- * yarn add gulp-plumber gulp-stylint
+ * yarn add gulp-stylint
  */
 
 gulpset.confs.stylint = {

@@ -2,10 +2,6 @@ const gulpset = require("./../../gulpset");
 const gulp = require("gulp");
 const $ = require("gulp-load-plugins")();
 
-/**
- * yarn add gulp-plumber gulp-changed --dev
- */
-
 gulpset.confs.copy = {
   src: [
     `${

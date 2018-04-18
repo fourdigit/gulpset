@@ -7,7 +7,7 @@ const logger = require("gulplog");
 const webpackConfig = require("../../../webpack.config.js");
 
 /**
- * yarn add webpack webpack-steram gulplog babel-core babel-loader babel-preset-env --dev
+ * yarn add webpack webpack-cli webpack-stream gulplog babel-core babel-loader babel-preset-env --dev
  */
 
 gulpset.confs.scripts = {

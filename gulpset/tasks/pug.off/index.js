@@ -3,7 +3,7 @@ const gulp = require("gulp");
 const $ = require("gulp-load-plugins")();
 
 /**
- * yarn add gulp-plumber gulp-changed gulp-pug gulp-posthtml posthtml-attrs-sorter gulp-prettify --dev
+ * yarn add gulp-pug --dev
  */
 
 gulpset.confs.pug = {
