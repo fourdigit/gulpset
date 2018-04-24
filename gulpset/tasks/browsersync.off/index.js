@@ -1,10 +1,9 @@
 const gulpset = require("./../../gulpset");
-const sync = require("browser-sync");
-const gutil = require("gulp-util");
 
-/**
- * yarn add browser-sync gulp-util --dev
- */
+// @verbose
+gulpset.gulp.task("browsersync", function(cb) {
+  gulpset.tasks.browsersync(cb);
+});
 
 gulpset.confs.browsersync = {
   port: 3000,
@@ -16,18 +15,23 @@ gulpset.confs.browsersync = {
   ghostMode: false
 };
 
-const browsersync = (cb, conf) => {
+//----------------------------------------------------------------------------------------------------
+///
+const sync = require("browser-sync");
+const gutil = require("gulp-util");
+
+gulpset.tasks.browsersync = (cb, conf) => {
   conf = conf || gulpset.confs.browsersync || {};
   if (!Array.isArray(conf)) conf = [conf];
 
   conf.forEach(conf => {
-    var bs = sync.create();
+    const bs = sync.create();
     bs.init(conf);
     gulpset.syncs.push(bs);
   });
   gulpset.stream = opt => {
     opt = opt || null;
-    var queue = gutil.noop();
+    const queue = gutil.noop();
     gulpset.syncs.forEach(bs => {
       queue.pipe(bs.stream(opt));
     });
@@ -35,6 +39,3 @@ const browsersync = (cb, conf) => {
   };
   cb();
 };
-
-// @verbose
-gulpset.gulp.task("browsersync", cb => browsersync(cb));

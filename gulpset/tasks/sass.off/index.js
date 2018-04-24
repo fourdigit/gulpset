@@ -1,35 +1,80 @@
 const gulpset = require("./../../gulpset");
+
+// @verbose
+gulpset.gulp.task("sass", cb => gulpset.tasks.sass(cb, false));
+
+// @verbose
+gulpset.gulp.task("sass-minify", cb => gulpset.tasks.sass(cb, true));
+
+gulpset.confs.sass = [
+  {
+    src: gulpset.paths.src + "app.scss",
+    dest: gulpset.paths.dest,
+    spritesheet: {
+      stylesheetPath: gulpset.paths.dest + "assets/app/css/",
+      spritePath: gulpset.paths.dest + "assets/app/imgs/spritesheets/"
+    }
+  }
+];
+
+//----------------------------------------------------------------------------------------------------
+///
 const gulp = require("gulp");
-const $ = require("gulp-load-plugins")();
+const plumber = require("gulp-plumber");
+const gulpif = require("gulp-if");
+const es = require("event-stream");
+const sass = require("gulp-sass");
+const sassGlob = require("gulp-sass-glob");
+const postcss = require("gulp-postcss");
 const autoprefixer = require("autoprefixer");
+const sprites = require("postcss-sprites");
+const sourcemaps = require("gulp-sourcemaps");
+const _ = require("lodash");
 
-gulpset.confs.sass = {
-  src: [`${gulpset.paths.src}**/*.{scss,sass}`],
-  dest: gulpset.paths.dest
-};
-
-gulpset.tasks.sass = (doMinify, browsers, conf) => {
-  if (doMinify === undefined) doMinify = false;
+gulpset.tasks.sass = (cb, doMinify, browsers, conf) => {
+  doMinify = doMinify === true;
   conf = conf || gulpset.confs.sass || {};
-  conf.browsers = conf.browsers || ["last 3 versions"];
-  if (browsers) conf.browsers = browsers;
+  if (!Array.isArray(conf)) conf = [conf];
 
-  let options = {};
-  if (doMinify) options.outputStyle = "compressed";
+  const options = {
+    outputStyle: doMinify ? "compressed" : "expanded"
+  };
 
-  return gulp
-    .src(conf.src)
-    .pipe($.plumber())
-    .pipe($.if(doMinify !== true, $.sourcemaps.init()))
-    .pipe($.sass(options).on("error", sass.logError))
-    .pipe($.postcss([autoprefixer()]))
-    .pipe($.if(doMinify !== true, $.sourcemaps.write("./")))
-    .pipe(gulp.dest(conf.dest))
-    .pipe(gulpset.stream({ match: "**/*.css" }));
+  const streams = conf.map(entry => {
+    const processors = [
+      autoprefixer({ add: false, browsers: [] }),
+      autoprefixer()
+    ];
+
+    if (entry.spritesheet) {
+      entry.spritesheet = _.merge(
+        {
+          stylesheetPath: null,
+          spritePath: null,
+          retina: true,
+          outputDimensions: true,
+          spritesmith: {
+            padding: 2
+          }
+        },
+        entry.spritesheet
+      );
+      processors.push(sprites(entry.spritesheet));
+    }
+
+    return gulp
+      .src(entry.src)
+      .pipe(plumber())
+      .pipe(sassGlob())
+      .pipe(gulpif(!doMinify, sourcemaps.init()))
+      .pipe(sass(options).on("error", sass.logError))
+      .pipe(postcss(processors))
+      .pipe(gulpif(!doMinify, sourcemaps.write("./")))
+      .pipe(gulp.dest(entry.dest))
+      .pipe(gulpset.stream({ match: "**/*.css" }));
+  });
+
+  es.merge(streams).on("end", function() {
+    cb();
+  });
 };
-
-// @verbose
-gulpset.gulp.task("sass", () => sass(false));
-
-// @verbose
-gulpset.gulp.task("sass-minify", () => sass(true));

@@ -1,14 +1,14 @@
 const gulpset = require("./../../gulpset");
+
+// @verbose
+gulpset.gulp.task("clean", () => gulpset.task.clean());
+
+//----------------------------------------------------------------------------------------------------
+//
+
 const del = require("del");
 
-/**
- * yarn add del --dev
- */
-
-const clean = path => {
+gulpset.task.clean = path => {
   path = path || gulpset.paths.dest;
   return del(path);
 };
-
-// @verbose
-gulpset.gulp.task("clean", () => clean());

@@ -1,19 +1,21 @@
 const gulpset = require("./../../gulpset");
-const gulp = require("gulp");
-const $ = require("gulp-load-plugins")();
-const webpack = require("webpack");
-const webpackStream = require("webpack-stream");
-const logger = require("gulplog");
-const webpackConfig = require("../../../webpack.config.js");
 
-/**
- * yarn add webpack webpack-cli webpack-stream gulplog babel-core babel-loader babel-preset-env --dev
- */
+// @verbose
+gulpset.gulp.task("scripts", () => scripts());
 
 gulpset.confs.scripts = {
   src: `${gulpset.paths.src}**/*.es6`,
   dest: gulpset.paths.dest
 };
+
+//----------------------------------------------------------------------------------------------------
+///
+const gulp = require("gulp");
+const plumber = require("gulp-plumber");
+const webpack = require("webpack");
+const webpackStream = require("webpack-stream");
+const logger = require("gulplog");
+const webpackConfig = require("../../../webpack.config.js");
 
 const scripts = (callback, conf) => {
   conf = conf || gulpset.confs.scripts || {};
@@ -41,11 +43,8 @@ const scripts = (callback, conf) => {
   // const config = conf || gulpset.confs.scripts || {};
   return gulp
     .src(conf.src)
-    .pipe($.plumber())
+    .pipe(plumber())
     .pipe(webpackStream(webpackConfig, webpack, done))
     .pipe(gulp.dest(conf.dest))
     .pipe(gulpset.stream());
 };
-
-// @verbose
-gulpset.gulp.task("scripts", () => scripts());

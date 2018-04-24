@@ -1,14 +1,26 @@
 const gulpset = require("./../../gulpset");
-const gulp = require("gulp");
-const $ = require("gulp-load-plugins")();
-const autoprefixer = require("autoprefixer");
+
+// @verbose
+gulpset.gulp.task("cleancss", () => cleancss(false));
+
+// @verbose
+gulpset.gulp.task("cleancss-minify", () => cleancss(true));
 
 gulpset.confs.cleancss = {
   src: [`${gulpset.paths.src}**/*.css`],
   dest: gulpset.paths.dest
 };
 
-const cleancss = (doMinify, browsers, renameRule, conf) => {
+//----------------------------------------------------------------------------------------------------
+///
+const gulp = require("gulp");
+const plumber = require("gulp-plumber");
+const gulpif = require("gulp-if");
+const cleancss = require("gulp-cleancss");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
+
+gulp.tasks.cleancss = (doMinify, browsers, renameRule, conf) => {
   if (doMinify === undefined) doMinify = false;
   conf = conf || gulpset.confs.cleancss || {};
   conf.browsers = conf.browsers || ["last 3 versions"];
@@ -19,12 +31,11 @@ const cleancss = (doMinify, browsers, renameRule, conf) => {
 
   return gulp
     .src(conf.src)
-    .pipe($.plumber())
-    .pipe($.if(doMinify !== true, sourcemaps.init()))
-    .pipe($.cleancss())
-    .pipe($.postcss([autoprefixer()]))
-    .pipe($.if(doMinify !== true, $.sourcemaps.write("./")))
-    .pipe($.if(renameRule !== undefined, $.rename(renameRule)))
+    .pipe(plumber())
+    .pipe(cleancss())
+    .pipe(postcss([autoprefixer()]))
+    .pipe(gulpifif(doMinify !== true, $.sourcemaps.write("./")))
+    .pipe(gulpif(renameRule !== undefined, $.rename(renameRule)))
     .pipe(gulp.dest(conf.dest))
     .pipe(
       gulpset.stream({
@@ -32,9 +43,3 @@ const cleancss = (doMinify, browsers, renameRule, conf) => {
       })
     );
 };
-
-// @verbose
-gulpset.gulp.task("cleancss", () => cleancss(false));
-
-// @verbose
-gulpset.gulp.task("cleancss-minify", () => cleancss(true));

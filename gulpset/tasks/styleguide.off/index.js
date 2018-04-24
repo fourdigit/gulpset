@@ -1,17 +1,16 @@
 const gulpset = require("./../../gulpset");
 const gulp = require("gulp");
-const $ = require("gulp-load-plugins")();
 
-/**
- * yarn add gulp-aigis --dev
- */
+// @verbose
+gulpset.gulp.task("styleguide", () => gulpset.tasks.styleguide());
 
 gulpset.confs.styleguide = { src: "./aigis_config.yml" };
 
-const styleguide = conf => {
-  const config = conf || gulpset.confs.styleguide || {};
-  return gulp.src(config.src).pipe($.aigis());
-};
+//----------------------------------------------------------------------------------------------------
+///
+const aigis = require("gulp-aigis");
 
-// @verbose
-gulpset.gulp.task("styleguide", () => styleguide());
+gulpset.tasks.styleguide = conf => {
+  const config = conf || gulpset.confs.styleguide || {};
+  return gulp.src(config.src).pipe(aigis());
+};
