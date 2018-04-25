@@ -1,27 +1,24 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require("./../../gulpset");
 
 // @verbose
-gulpset.gulp.task("sasslint",	function() { return gulpset.tasks.sasslint(); });
-
+gulpset.gulp.task("sasslint", () => gulpset.tasks.sasslint());
 
 gulpset.confs.sasslint = {
-	config: "./.sass-lint.yml",
-	src: [gulpset.paths.src + "**/*.{scss,sass}"]
+  config: "./.sass-lint.yml",
+  src: [gulpset.paths.src + "**/*.{scss,sass}"]
 };
-
-
 
 //----------------------------------------------------------------------------------------------------
 ///
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var sasslint = require('gulp-sass-lint');
+const gulp = require("gulp");
+const plumber = require("gulp-plumber");
+const sasslint = require("gulp-sass-lint");
 
-gulpset.tasks.sasslint = function(conf) {
-	conf = conf || gulpset.confs.sasslint || {};
-	return gulp.src(conf.src)
-		.pipe(plumber())
-		.pipe(sasslint({config: conf.config}))
-		.pipe(sasslint.format());
+gulpset.tasks.sasslint = conf => {
+  conf = conf || gulpset.confs.sasslint || {};
+  return gulp
+    .src(conf.src)
+    .pipe(plumber())
+    .pipe(sasslint({ config: conf.config }))
+    .pipe(sasslint.format());
 };

@@ -1,26 +1,24 @@
-var gulpset = require("./../../gulpset");
+const gulpset = require("./../../gulpset");
 
-
-// @verbose
-gulpset.gulp.task("watch",	function(cb) { gulpset.tasks.watch(cb); });
-
-
-gulpset.confs.watch = [{
-	watch: "",
-	run: [""]
-}];
-
-
+gulpset.confs.watch = [
+  {
+    watch: "",
+    run: [""]
+  }
+];
 
 //----------------------------------------------------------------------------------------------------
 ///
-var gulp = require("gulp");
+const gulp = require("gulp");
 
-gulpset.tasks.watch = function(cb, conf) {
-	conf = conf || gulpset.confs.watch || {};
-	for(var i = 0, iLen = conf.length; i < iLen; i++) {
-		var node = conf[i];
-		gulp.watch(node.watch, node.run);
-	}
-	cb();
+gulpset.tasks.watch = (cb, conf) => {
+  conf = conf || gulpset.confs.watch || {};
+  for (let i = 0, iLen = conf.length; i < iLen; i++) {
+    const node = conf[i];
+    gulp.watch(node.watch, node.run);
+  }
+  cb();
 };
+
+// @verbose
+gulpset.gulp.task("watch", cb => gulpset.tasks.watch(cb));

@@ -1,46 +1,45 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require("./../../gulpset");
 
 // @verbose
-gulpset.gulp.task("cleancss",			function() { return gulpset.tasks.cleancss(false); });
-// @verbose
-gulpset.gulp.task("cleancss-minify",	function() { return gulpset.tasks.cleancss(true); });
+gulpset.gulp.task("cleancss", () => gulp.tasks.cleancss(false));
 
+// @verbose
+gulpset.gulp.task("cleancss-minify", () => gulp.tasks.cleancss(true));
 
 gulpset.confs.cleancss = {
-	src: [gulpset.paths.src + "**/*.css"],
-	dest: gulpset.paths.dest
+  src: [`${gulpset.paths.src}**/*.css`],
+  dest: gulpset.paths.dest
 };
-
-
 
 //----------------------------------------------------------------------------------------------------
 ///
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var gulpif = require("gulp-if");
-var cleancss = require("gulp-clean-css");
-var postcss = require("gulp-postcss");
-var autoprefixer = require("autoprefixer");
-var sourcemaps = require("gulp-sourcemaps");
-var rename = require("gulp-rename");
+const gulp = require("gulp");
+const plumber = require("gulp-plumber");
+const gulpif = require("gulp-if");
+const cleancss = require("gulp-cleancss");
+const postcss = require("gulp-postcss");
+const autoprefixer = require("autoprefixer");
 
-gulpset.tasks.cleancss = function(doMinify, browsers, renameRule, conf) {
-	if(doMinify === undefined) doMinify = false;
-	conf = conf || gulpset.confs.cleancss || {};
-	conf.browsers = conf.browsers || ["last 3 versions"];
-	if(browsers) conf.browsers = browsers;
+gulp.tasks.cleancss = (doMinify, browsers, renameRule, conf) => {
+  if (doMinify === undefined) doMinify = false;
+  conf = conf || gulpset.confs.cleancss || {};
+  conf.browsers = conf.browsers || ["last 3 versions"];
+  if (browsers) conf.browsers = browsers;
 
-	var options = {};
-	if(doMinify) options.outputStyle = "compressed";
+  var options = {};
+  if (doMinify) options.outputStyle = "compressed";
 
-	return gulp.src(conf.src)
-		.pipe(plumber())
-		.pipe(gulpif(doMinify !== true, sourcemaps.init()))
-		.pipe(cleancss())
-		.pipe(postcss([autoprefixer({browsers: conf.browsers})]))
-		.pipe(gulpif(doMinify !== true, sourcemaps.write("./")))
-		.pipe(gulpif(renameRule !== undefined, rename(renameRule)))
-		.pipe(gulp.dest(conf.dest))
-		.pipe(gulpset.stream({match: "**/*.css"}));
+  return gulp
+    .src(conf.src)
+    .pipe(plumber())
+    .pipe(cleancss())
+    .pipe(postcss([autoprefixer()]))
+    .pipe(gulpifif(doMinify !== true, $.sourcemaps.write("./")))
+    .pipe(gulpif(renameRule !== undefined, $.rename(renameRule)))
+    .pipe(gulp.dest(conf.dest))
+    .pipe(
+      gulpset.stream({
+        match: "**/*.css"
+      })
+    );
 };
