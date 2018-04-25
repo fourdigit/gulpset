@@ -65,7 +65,7 @@ gulpset.tasks.stylus = (cb, doMinify, browsers, conf) => {
       .src(entry.src)
       .pipe(plumber())
       .pipe(gulpif(!doMinify, sourcemaps.init()))
-      .pipe(stylus(options).on("error", stylus.logError))
+      .pipe(stylus(options))
       .pipe(postcss(processors))
       .pipe(gulpif(!doMinify, sourcemaps.write("./")))
       .pipe(gulp.dest(entry.dest))

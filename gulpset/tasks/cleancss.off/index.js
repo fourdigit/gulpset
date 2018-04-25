@@ -1,10 +1,10 @@
 const gulpset = require("./../../gulpset");
 
 // @verbose
-gulpset.gulp.task("cleancss", () => cleancss(false));
+gulpset.gulp.task("cleancss", () => gulp.tasks.cleancss(false));
 
 // @verbose
-gulpset.gulp.task("cleancss-minify", () => cleancss(true));
+gulpset.gulp.task("cleancss-minify", () => gulp.tasks.cleancss(true));
 
 gulpset.confs.cleancss = {
   src: [`${gulpset.paths.src}**/*.css`],

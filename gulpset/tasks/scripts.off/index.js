@@ -1,7 +1,7 @@
 const gulpset = require("./../../gulpset");
 
 // @verbose
-gulpset.gulp.task("scripts", () => scripts());
+gulpset.gulp.task("scripts", cb => gulpset.tasks.scripts(cb));
 
 gulpset.confs.scripts = {
   src: `${gulpset.paths.src}**/*.es6`,
@@ -17,7 +17,7 @@ const webpackStream = require("webpack-stream");
 const logger = require("gulplog");
 const webpackConfig = require("../../../webpack.config.js");
 
-const scripts = (callback, conf) => {
+gulpset.tasks.scripts = (callback, conf) => {
   conf = conf || gulpset.confs.scripts || {};
   let firstBuildReady = false;
 

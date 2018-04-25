@@ -1,9 +1,7 @@
 const gulpset = require("./../../gulpset");
 
 // @verbose
-gulpset.gulp.task("browsersync", function(cb) {
-  gulpset.tasks.browsersync(cb);
-});
+gulpset.gulp.task("browsersync", cb => gulpset.tasks.browsersync(cb));
 
 gulpset.confs.browsersync = {
   port: 3000,

@@ -1,7 +1,7 @@
 const gulpset = require("./../../gulpset");
 
 // @verbose
-gulpset.gulp.task("docs", () => docs());
+gulpset.gulp.task("docs", () => gulpset.tasks.docs());
 
 gulpset.confs.docs = {
   src: `${gulpset.paths.src}**/*.md`,
