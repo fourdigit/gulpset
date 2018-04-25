@@ -14,7 +14,7 @@ const gulp = require("gulp");
 const plumber = require("gulp-plumber");
 const jsdoc = require("gulp-jsdoc3");
 
-gulpset.tasks.jsdoc = function(conf) {
+gulpset.tasks.jsdoc = conf => {
   conf = conf || gulpset.confs.jsdoc || {};
   return gulp
     .src(conf.src, { read: false })

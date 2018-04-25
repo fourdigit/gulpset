@@ -14,7 +14,7 @@ const gulp = require("gulp");
 const plumber = require("gulp-plumber");
 const imagemin = require("gulp-imagemin");
 
-gulpset.tasks.imagemin = function(conf) {
+gulpset.tasks.imagemin = conf => {
   conf = conf || gulpset.confs.imagemin || {};
   return gulp
     .src(conf.src)

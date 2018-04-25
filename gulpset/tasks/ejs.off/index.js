@@ -23,7 +23,7 @@ const ejs = require("gulp-ejs");
 const changed = require("gulp-changed");
 const beautify = require("gulp-jsbeautifier");
 
-gulpset.tasks.ejs = function(data, options, settings, conf) {
+gulpset.tasks.ejs = (data, options, settings, conf) => {
   data = data || gulpset.confs.ejs.data || {};
   options = options || gulpset.confs.ejs.options || {};
   settings = settings || gulpset.confs.ejs.settings || {};

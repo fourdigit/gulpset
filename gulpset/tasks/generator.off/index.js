@@ -40,7 +40,7 @@ gulpset.tasks.generator = (cb, conf) => {
   };
   csv
     .fromString(fileContent, { headers: true })
-    .on("data", function(data) {
+    .on("data", data => {
       var tmpl = data.template;
       var dest = data.destination;
       delete data.template;
@@ -52,7 +52,7 @@ gulpset.tasks.generator = (cb, conf) => {
         .pipe(rename(dest))
         .pipe(gulp.dest("./"));
     })
-    .on("end", function() {
+    .on("end", () => {
       cb();
     });
 };

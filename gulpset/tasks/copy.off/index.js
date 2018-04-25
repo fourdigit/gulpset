@@ -15,7 +15,7 @@ const gulp = require("gulp");
 const plumber = require("gulp-plumber");
 const changed = require("gulp-changed");
 
-gulpset.tasks.copy = function(conf) {
+gulpset.tasks.copy = conf => {
   conf = conf || gulpset.confs.copy || {};
   return gulp
     .src(conf.src)

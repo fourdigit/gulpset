@@ -74,7 +74,7 @@ gulpset.tasks.sass = (cb, doMinify, browsers, conf) => {
       .pipe(gulpset.stream({ match: "**/*.css" }));
   });
 
-  es.merge(streams).on("end", function() {
+  es.merge(streams).on("end", () => {
     cb();
   });
 };
