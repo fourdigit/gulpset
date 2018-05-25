@@ -6,7 +6,7 @@ gulpset.gulp.task("imagemin",	function() { return gulpset.tasks.imagemin(); });
 
 
 gulpset.confs.imagemin = {
-	src: [gulpset.paths.src + "**/*.{png,jpg,gif,svg}"],
+	src: [gulpset.paths.src + "**/*.{png,jpg,gif}"],
 	dest: gulpset.paths.dest
 };
 
