@@ -3,6 +3,8 @@ var gulpset = require("./../../gulpset");
 
 // @verbose
 gulpset.gulp.task("eslint",	function() { return gulpset.tasks.eslint(); });
+// @verbose
+gulpset.gulp.task("eslint-fix",	function() { return gulpset.tasks.eslint(true); });
 
 
 gulpset.confs.eslint = {
@@ -16,11 +18,16 @@ gulpset.confs.eslint = {
 var gulp = require("gulp");
 var plumber = require("gulp-plumber");
 var eslint = require("gulp-eslint");
+var gulpif = require("gulp-if");
 
-gulpset.tasks.eslint = function(conf) {
+gulpset.tasks.eslint = function(doFix, conf) {
+	doFix = doFix === true;
 	conf = conf || gulpset.confs.eslint || {};
 	return gulp.src(conf.src)
 		.pipe(plumber())
-		.pipe(eslint())
-		.pipe(eslint.format());
+		.pipe(eslint({
+		  fix: doFix
+		}))
+		.pipe(eslint.format())
+		.pipe(gulpif(doFix, gulp.dest(conf.src.toString().replace(/\*.*$/, ""))));
 };
