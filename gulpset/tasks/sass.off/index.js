@@ -8,8 +8,8 @@ gulpset.gulp.task("sass-minify", function(cb) { return gulpset.tasks.sass(cb, tr
 
 
 gulpset.confs.sass = [{
-	src: gulpset.paths.src + "app.scss",
-	dest: gulpset.paths.dest,
+  src: gulpset.paths.src + "app.scss",
+  dest: gulpset.paths.dest,
   browsers: ["last 3 versions"],
   spritesheet: {
     stylesheetPath: gulpset.paths.dest + "assets/app/css/",
@@ -35,11 +35,11 @@ var _ = require("lodash");
 
 gulpset.tasks.sass = function (cb, doMinify, browsers, conf) {
   doMinify = doMinify === true;
-	conf = conf || gulpset.confs.sass || {};
+  conf = conf || gulpset.confs.sass || {};
   if(!Array.isArray(conf)) conf = [conf];
 
-	var options = {
-	  outputStyle: doMinify ? "compressed" : "expanded"
+  var options = {
+    outputStyle: doMinify ? "compressed" : "expanded"
   };
 
   var streams = conf.map(function(entry) {

@@ -17,17 +17,17 @@ var gutil = require("gulp-util");
 
 // gulpset
 module.exports = {
-	gulp: gulp,
-	paths: {
-		root: "./",
-		src: "./src/",
-		dest: "./build/",
-		docs: "./docs/"
-	},
-	tasks: {},
-	confs: {},
-	syncs: [],
-	stream: function() { return gutil.noop(); }
+  gulp: gulp,
+  paths: {
+    root: "./",
+    src: "./src/",
+    dest: "./build/",
+    docs: "./docs/"
+  },
+  tasks: {},
+  confs: {},
+  syncs: [],
+  stream: function() { return gutil.noop(); }
 };
 
 // load tasks

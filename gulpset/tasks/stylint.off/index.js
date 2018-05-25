@@ -2,11 +2,11 @@ var gulpset = require("./../../gulpset");
 
 
 // @verbose
-gulpset.gulp.task("stylint",			function() { return gulpset.tasks.stylint(); });
+gulpset.gulp.task("stylint", function() { return gulpset.tasks.stylint(); });
 
 
 gulpset.confs.stylint = {
-	src: [gulpset.paths.src + "**/*.styl"]
+  src: [gulpset.paths.src + "**/*.styl"]
 };
 
 
@@ -18,9 +18,9 @@ var plumber = require("gulp-plumber");
 var stylint = require('gulp-stylint');
 
 gulpset.tasks.stylint = function(conf) {
-	conf = conf || gulpset.confs.stylint || {};
-	return gulp.src(conf.src)
-		.pipe(plumber())
-		.pipe(stylint())
-		.pipe(stylint.reporter());
+  conf = conf || gulpset.confs.stylint || {};
+  return gulp.src(conf.src)
+    .pipe(plumber())
+    .pipe(stylint())
+    .pipe(stylint.reporter());
 };

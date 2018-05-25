@@ -4,7 +4,7 @@ var gulpset = require("./../gulpset");
 // set local only tasks
 /*
 gulpset.gulp.task("custom", function() {
-	console.log(gulpset.confs.sync);
+  console.log(gulpset.confs.sync);
 });
 */
 
@@ -18,6 +18,6 @@ gulpset.gulp.task("custom", function() {
 // eg) filter js file to compile
 /*
 gulpset.confs.babel = gulpset.confs.babel.filter(function(val, num) {
-	return val.file === "index.js";
+  return val.file === "index.js";
 });
 */
