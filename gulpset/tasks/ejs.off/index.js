@@ -25,6 +25,8 @@ var gulp = require("gulp");
 var plumber = require("gulp-plumber");
 var ejs = require("gulp-ejs");
 var changed = require("gulp-changed");
+var beautify = require("gulp-jsbeautifier");
+
 
 gulpset.tasks.ejs = function(data, options, settings, conf) {
 	data = data || gulpset.confs.ejs.data || {};
@@ -36,6 +38,7 @@ gulpset.tasks.ejs = function(data, options, settings, conf) {
 		.pipe(plumber())
 		.pipe(changed(conf.dest))
 		.pipe(ejs(data, options, settings))
+		.pipe(beautify({indentSize: 2}))
 		.pipe(gulp.dest(conf.dest))
 		.pipe(gulpset.stream());
 };
