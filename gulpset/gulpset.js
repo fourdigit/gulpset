@@ -8,12 +8,10 @@
  * found in the LICENSE file at https://github.com/fourdigitdesign/gulpset/blob/master/LICENSE
  */
 
-
 // imports
-var gulp = require("gulp-task-doc");
-var glob = require("glob");
-var gutil = require("gulp-util");
-
+const gulp = require("gulp-task-doc");
+const glob = require("glob");
+const gutil = require("gulp-util");
 
 // gulpset
 module.exports = {
@@ -27,19 +25,25 @@ module.exports = {
   tasks: {},
   confs: {},
   syncs: [],
-  stream: function() { return gutil.noop(); }
+  stream: () => {
+    return gutil.noop();
+  }
 };
 
 // load tasks
-var tasks = glob.sync(__dirname + "/tasks/!(*.off)/*.js");
-tasks.forEach(function(val) { require(val); });
+const tasks = glob.sync(__dirname + "/tasks/!(*.off)/*.js");
+tasks.forEach(val => {
+  require(val);
+});
 
 // load config
 require("./config");
 
 // load local settings
-var locals = glob.sync(__dirname + "/local/*.js");
-locals.forEach(function(val) { require(val); });
+const locals = glob.sync(__dirname + "/local/*.js");
+locals.forEach(val => {
+  require(val);
+});
 
 // @internal
 gulp.task("default", gulp.help());

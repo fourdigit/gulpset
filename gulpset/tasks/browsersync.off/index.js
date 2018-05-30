@@ -1,9 +1,7 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require("./../../gulpset");
 
 // @verbose
-gulpset.gulp.task("browsersync", function(cb) { gulpset.tasks.browsersync(cb); });
-
+gulpset.gulp.task("browsersync", cb => gulpset.tasks.browsersync(cb));
 
 gulpset.confs.browsersync = {
   port: 3000,
@@ -15,26 +13,24 @@ gulpset.confs.browsersync = {
   ghostMode: false
 };
 
-
-
 //----------------------------------------------------------------------------------------------------
 ///
-var sync = require("browser-sync");
-var gutil = require("gulp-util");
+const sync = require("browser-sync");
+const gutil = require("gulp-util");
 
-gulpset.tasks.browsersync = function(cb, conf) {
+gulpset.tasks.browsersync = (cb, conf) => {
   conf = conf || gulpset.confs.browsersync || {};
-  if(!Array.isArray(conf)) conf = [conf];
+  if (!Array.isArray(conf)) conf = [conf];
 
-  conf.forEach(function(conf) {
-    var bs = sync.create();
+  conf.forEach(conf => {
+    const bs = sync.create();
     bs.init(conf);
     gulpset.syncs.push(bs);
   });
-  gulpset.stream = function(opt) {
+  gulpset.stream = opt => {
     opt = opt || null;
-    var queue = gutil.noop();
-    gulpset.syncs.forEach(function(bs) {
+    const queue = gutil.noop();
+    gulpset.syncs.forEach(bs => {
       queue.pipe(bs.stream(opt));
     });
     return queue;
