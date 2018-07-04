@@ -1,35 +1,33 @@
-var gulpset = require("./../../gulpset");
-
+const gulpset = require("./../../gulpset");
 
 // @verbose
-gulpset.gulp.task("generator", function(cb) { return gulpset.tasks.generator(cb); });
-
+gulpset.gulp.task("generator", cb => gulpset.tasks.generator(cb));
 
 gulpset.confs.generator = {
   data: "./generator/data.csv"
 };
 
-
-
 //----------------------------------------------------------------------------------------------------
 ///
-var fs = require("fs");
-var gulp = require("gulp");
-var plumber = require("gulp-plumber");
-var template = require("gulp-template");
-var iconv = require("iconv-lite");
-var csv = require("fast-csv");
-var rename = require("gulp-rename");
+const fs = require("fs");
+const gulp = require("gulp");
+const plumber = require("gulp-plumber");
+const template = require("gulp-template");
+const iconv = require("iconv-lite");
+const csv = require("fast-csv");
+const rename = require("gulp-rename");
 
-gulpset.tasks.generator = function(cb, conf) {
+gulpset.tasks.generator = (cb, conf) => {
   conf = conf || gulpset.confs.generator || {};
-  var fileContent = iconv.decode(fs.readFileSync(conf.data), "shift_jis").replace(/(\r\n|\r|\n)/ig, "\n");
-  var options = {
-    "imports": {
-      "nl2br": function(str) {
-        return str.replace(/\n/ig, "<br />\n");
+  const fileContent = iconv
+    .decode(fs.readFileSync(conf.data), "shift_jis")
+    .replace(/(\r\n|\r|\n)/gi, "\n");
+  const options = {
+    imports: {
+      nl2br: str => {
+        return str.replace(/\n/gi, "<br />\n");
       },
-      "escapehtml": function(str) {
+      escapehtml: str => {
         return str
           .replace(/&/g, "&amp;")
           .replace(/</g, "&lt;")
@@ -37,22 +35,24 @@ gulpset.tasks.generator = function(cb, conf) {
           .replace(/"/g, "&quot;")
           .replace(/'/g, "&#039;");
       },
-      "escapeurl": encodeURIComponent
+      escapeurl: encodeURIComponent
     }
   };
-  csv.fromString(fileContent, {headers: true})
-    .on("data", function(data) {
+  csv
+    .fromString(fileContent, { headers: true })
+    .on("data", data => {
       var tmpl = data.template;
       var dest = data.destination;
       delete data.template;
       delete data.destination;
-      gulp.src(tmpl)
+      gulp
+        .src(tmpl)
         .pipe(plumber())
         .pipe(template(data, options))
         .pipe(rename(dest))
         .pipe(gulp.dest("./"));
     })
-    .on("end", function() {
+    .on("end", () => {
       cb();
     });
 };

@@ -1,17 +1,24 @@
-var gulpset = require("./gulpset/gulpset");
-var runSequence = require("run-sequence");
-
-
-
+const gulpset = require("./gulpset/gulpset");
 
 /**
  * development build + watch + browsersync
  */
-gulpset.gulp.task("dev", function(cb) {
-  runSequence(
-    //["copy", "concat", "eslint", "stylint", "babel-watch", "stylus"],
-    //"watch",
-    //"browsersync",
-    cb
-  );
-});
+// gulpset.gulp.task(
+//   "dev",
+//   gulpset.gulp.series(
+//     "clean",
+//     gulpset.gulp.parallel(
+//       "copy",
+//       "stylint",
+//       "imagemin",
+//       "stylus",
+//       "scripts",
+//       "pug",
+//       "styleguide",
+//       "styleguide-theme",
+//       "docs"
+//     ),
+//     "watch",
+//     "browsersync"
+//   )
+// );
