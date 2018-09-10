@@ -1,21 +1,17 @@
-const gulpset = require("./gulpset/gulpset");
-const path = require("path");
-const webpack = require("webpack");
-const NODE_ENV = process.env.NODE_ENV ? "production" : "development";
-const isDevelopment = NODE_ENV === "development";
-const conf = gulpset.confs.scripts;
+const path = require('path');
+const NODE_ENV = process.env.NODE_ENV ? 'production' : 'development';
 
 module.exports = {
   mode: NODE_ENV,
-  context: __dirname + "/src",
+  context: __dirname + '/src',
   entry: {
-    libs: "./js/libs.es6",
-    app: "./js/app.es6"
+    libs: './js/libs.es6',
+    app: './js/app.es6'
   },
   output: {
-    filename: "[name].js",
-    path: path.join(__dirname + "/build/assets/app/js/"),
-    publicPath: "/assets/app/js/"
+    filename: '[name].js',
+    path: path.join(__dirname + '/build/assets/app/js/'),
+    publicPath: '/assets/app/js/'
   },
   module: {
     rules: [
@@ -24,9 +20,9 @@ module.exports = {
         exclude: /node_modules/,
         use: [
           {
-            loader: "babel-loader",
+            loader: 'babel-loader',
             options: {
-              presets: ["env"]
+              presets: ['env']
             }
           }
         ]
