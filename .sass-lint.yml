@@ -9,7 +9,7 @@ rules:
   indentation:
     - 2
     -
-      size: 'tab'
+      size: 2
   empty-line-between-blocks: 0
   no-css-comments: 0
   space-around-operator: 2
