@@ -1,7 +1,7 @@
-const gulpset = require("./../../gulpset");
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("browsersync", cb => gulpset.tasks.browsersync(cb));
+gulpset.gulp.task('browsersync', cb => gulpset.tasks.browsersync(cb));
 
 gulpset.confs.browsersync = {
   port: 3000,
@@ -9,14 +9,14 @@ gulpset.confs.browsersync = {
     baseDir: gulpset.paths.dest,
     directory: true
   },
-  startPath: "/",
+  startPath: '/',
   ghostMode: false
 };
 
 //----------------------------------------------------------------------------------------------------
 ///
-const sync = require("browser-sync");
-const gutil = require("gulp-util");
+const sync = require('browser-sync');
+const gutil = require('gulp-util');
 
 gulpset.tasks.browsersync = (cb, conf) => {
   conf = conf || gulpset.confs.browsersync || {};

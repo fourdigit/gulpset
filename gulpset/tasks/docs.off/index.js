@@ -1,7 +1,7 @@
-const gulpset = require("./../../gulpset");
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("docs", () => gulpset.tasks.docs());
+gulpset.gulp.task('docs', () => gulpset.tasks.docs());
 
 gulpset.confs.docs = {
   src: `${gulpset.paths.src}**/*.md`,
@@ -10,10 +10,10 @@ gulpset.confs.docs = {
 
 //----------------------------------------------------------------------------------------------------
 ///
-const gulp = require("gulp");
-const frontMatter = require("gulp-front-matter");
-const markdown = require("gulp-markdown");
-const layout = require("gulp-layout");
+const gulp = require('gulp');
+const frontMatter = require('gulp-front-matter');
+const markdown = require('gulp-markdown');
+const layout = require('gulp-layout');
 
 gulpset.tasks.docs = conf => {
   const config = conf || gulpset.confs.docs || {};

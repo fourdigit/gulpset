@@ -1,27 +1,27 @@
-var gulpset = require("./../../gulpset");
+var gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("ejs", () => gulpset.tasks.ejs());
+gulpset.gulp.task('ejs', () => gulpset.tasks.ejs());
 
 gulpset.confs.ejs = {
-  src: [gulpset.paths.src + "**/*.html"],
+  src: [gulpset.paths.src + '**/*.html'],
   dest: gulpset.paths.dest,
   data: {},
   options: {
     root: process.cwd()
   },
   settings: {
-    ext: ".html"
+    ext: '.html'
   }
 };
 
 //----------------------------------------------------------------------------------------------------
 ///
-const gulp = require("gulp");
-const plumber = require("gulp-plumber");
-const ejs = require("gulp-ejs");
-const changed = require("gulp-changed");
-const beautify = require("gulp-jsbeautifier");
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const ejs = require('gulp-ejs');
+const changed = require('gulp-changed');
+const beautify = require('gulp-jsbeautifier');
 
 gulpset.tasks.ejs = (data, options, settings, conf) => {
   data = data || gulpset.confs.ejs.data || {};
