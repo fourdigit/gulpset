@@ -1,13 +1,14 @@
 {
 	"name": "gulpset-skeleton",
-	"version": "1.0.0",
+	"version": "3.0.0-beta1",
 	"description": "Gulp based project skeleton with modular tasks.",
 	"main": "gulpfile.js",
-	"author": "Nobuyuki NISHIGAKI",
+	"author": "FOURDIGIT Inc., Nobuyuki NISHIGAKI",
 	"license": "MIT",
 	"devDependencies": {
+    "@fourdigit/eslint-config-fourdigit": "^1.0.4",
+    "@fourdigit/sasslint-config-fourdigit": "^1.0.2",
 		"babel-eslint": "^9.0.0",
-		"cross-env": "^5.1.4",
 		"eslint": "^5.5.0",
 		"eslint-config-prettier": "^3.0.1",
 		"eslint-plugin-prettier": "^2.6.2",
@@ -21,14 +22,13 @@
 		"prettier": "^1.14.2"
 	},
 	"dependencies": {
+		"@fourdigit/sanitize-4d.css": "^7.0.4",
 		"auto-install": "^1.7.4"
 	},
 	"directories": {
 		"doc": "docs"
 	},
 	"scripts": {
-		"start": "webpack --watch & cross-env NODE_ENV=development gulp dev",
-		"build": "cross-env NODE_ENV=production gulp build && webpack"
 	},
 	"repository": {
 		"type": "git",
