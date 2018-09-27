@@ -1,6 +1,6 @@
 {
   "name": "gulpset-skeleton",
-  "version": "3.0.0-beta1",
+  "version": "3.0.0-beta2",
   "description": "Gulp based project skeleton with modular tasks.",
   "main": "gulpfile.js",
   "author": "FOURDIGIT Inc., Nobuyuki NISHIGAKI",
@@ -8,27 +8,55 @@
   "devDependencies": {
     "@fourdigit/eslint-config-fourdigit": "^1.0.4",
     "@fourdigit/sasslint-config-fourdigit": "^1.0.2",
+    "autoprefixer": "^9.1.5",
     "babel-eslint": "^9.0.0",
+    "browser-sync": "^2.24.7",
+    "del": "^3.0.0",
     "eslint": "^5.5.0",
     "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-dollar-sign": "^1.0.1",
     "eslint-plugin-prettier": "^2.6.2",
+    "event-stream": "^4.0.0",
+    "fast-csv": "^2.4.1",
     "glob": "^7.1.2",
     "gulp": "^4.0.0",
+    "gulp-aigis": "^1.3.0",
     "gulp-changed": "^3.2.0",
+    "gulp-ejs": "^3.2.0",
+    "gulp-front-matter": "^1.3.0",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^4.1.0",
+    "gulp-jsbeautifier": "^2.1.2",
+    "gulp-layout": "0.0.4",
     "gulp-load-plugins": "^1.5.0",
+    "gulp-markdown": "^3.0.0",
     "gulp-plumber": "^1.2.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-pug": "^4.0.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-sass-glob": "^1.0.9",
+    "gulp-sass-lint": "^1.4.0",
+    "gulp-sourcemaps": "^2.6.4",
     "gulp-task-doc": "^1.0.11",
+    "gulp-template": "^5.0.0",
     "gulp-util": "^3.0.8",
-    "prettier": "^1.14.2"
+    "gulplog": "^1.0.0",
+    "iconv-lite": "^0.4.24",
+    "lodash": "^4.17.11",
+    "postcss-sprites": "^4.2.1",
+    "prettier": "^1.14.2",
+    "webpack": "^4.20.2",
+    "webpack-stream": "^5.1.1"
   },
   "dependencies": {
-    "@fourdigit/sanitize-4d.css": "^7.0.4",
-    "auto-install": "^1.7.4"
+    "@fourdigit/sanitize-4d.css": "^7.0.4"
   },
   "directories": {
     "doc": "docs"
   },
   "scripts": {
+    "eslint:fix": "yarn eslint --fix"
   },
   "repository": {
     "type": "git",
