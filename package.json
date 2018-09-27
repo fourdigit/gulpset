@@ -1,47 +1,47 @@
 {
-	"name": "gulpset-skeleton",
-	"version": "3.0.0-beta1",
-	"description": "Gulp based project skeleton with modular tasks.",
-	"main": "gulpfile.js",
-	"author": "FOURDIGIT Inc., Nobuyuki NISHIGAKI",
-	"license": "MIT",
-	"devDependencies": {
+  "name": "gulpset-skeleton",
+  "version": "3.0.0-beta1",
+  "description": "Gulp based project skeleton with modular tasks.",
+  "main": "gulpfile.js",
+  "author": "FOURDIGIT Inc., Nobuyuki NISHIGAKI",
+  "license": "MIT",
+  "devDependencies": {
     "@fourdigit/eslint-config-fourdigit": "^1.0.4",
     "@fourdigit/sasslint-config-fourdigit": "^1.0.2",
-		"babel-eslint": "^9.0.0",
-		"eslint": "^5.5.0",
-		"eslint-config-prettier": "^3.0.1",
-		"eslint-plugin-prettier": "^2.6.2",
-		"glob": "^7.1.2",
-		"gulp": "^4.0.0",
-		"gulp-changed": "^3.2.0",
-		"gulp-load-plugins": "^1.5.0",
-		"gulp-plumber": "^1.2.0",
-		"gulp-task-doc": "^1.0.11",
-		"gulp-util": "^3.0.8",
-		"prettier": "^1.14.2"
-	},
-	"dependencies": {
-		"@fourdigit/sanitize-4d.css": "^7.0.4",
-		"auto-install": "^1.7.4"
-	},
-	"directories": {
-		"doc": "docs"
-	},
-	"scripts": {
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/fourdigitdesign/gulpset.git"
-	},
-	"keywords": [
-		"gulp",
-		"skeleton",
-		"modular",
-		"tasks"
-	],
-	"bugs": {
-		"url": "https://github.com/fourdigitdesign/gulpset/issues"
-	},
-	"homepage": "https://github.com/fourdigitdesign/gulpset#readme"
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.5.0",
+    "eslint-config-prettier": "^3.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "glob": "^7.1.2",
+    "gulp": "^4.0.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-task-doc": "^1.0.11",
+    "gulp-util": "^3.0.8",
+    "prettier": "^1.14.2"
+  },
+  "dependencies": {
+    "@fourdigit/sanitize-4d.css": "^7.0.4",
+    "auto-install": "^1.7.4"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fourdigitdesign/gulpset.git"
+  },
+  "keywords": [
+    "gulp",
+    "skeleton",
+    "modular",
+    "tasks"
+  ],
+  "bugs": {
+    "url": "https://github.com/fourdigitdesign/gulpset/issues"
+  },
+  "homepage": "https://github.com/fourdigitdesign/gulpset#readme"
 }
