@@ -1,7 +1,7 @@
-const gulpset = require("./../../gulpset");
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("scripts", cb => gulpset.tasks.scripts(cb));
+gulpset.gulp.task('scripts', cb => gulpset.tasks.scripts(cb));
 
 gulpset.confs.scripts = {
   src: `${gulpset.paths.src}**/*.es6`,
@@ -10,12 +10,12 @@ gulpset.confs.scripts = {
 
 //----------------------------------------------------------------------------------------------------
 ///
-const gulp = require("gulp");
-const plumber = require("gulp-plumber");
-const webpack = require("webpack");
-const webpackStream = require("webpack-stream");
-const logger = require("gulplog");
-const webpackConfig = require("../../../webpack.config.js");
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
+const logger = require('gulplog');
+const webpackConfig = require('../../../webpack.config.js');
 
 gulpset.tasks.scripts = (callback, conf) => {
   conf = conf || gulpset.confs.scripts || {};
@@ -31,7 +31,7 @@ gulpset.tasks.scripts = (callback, conf) => {
 
     // https://webpack.js.org/api/node/#stats-object
     // https://webpack.js.org/configuration/stats/
-    logger[stats.hasErrors() ? "error" : "info"](
+    logger[stats.hasErrors() ? 'error' : 'info'](
       stats.toString({
         chunks: false, // Makes the build much quieter
         modules: false,

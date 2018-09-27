@@ -1,9 +1,4 @@
 {
-  "extends": ["plugin:prettier/recommended"],
-  "globals": {
-    "document": true,
-    "$": true,
-    "window": true,
-    "_": true
-  }
+  "root": true,
+  "extends": ["@fourdigit/eslint-config-fourdigit/esnext"]
 }

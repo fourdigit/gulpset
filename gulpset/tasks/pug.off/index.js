@@ -1,7 +1,7 @@
-const gulpset = require("./../../gulpset");
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("pug", () => gulpset.tasks.pug());
+gulpset.gulp.task('pug', () => gulpset.tasks.pug());
 
 gulpset.confs.pug = {
   entry: `${gulpset.paths.src}**/*.pug`,
@@ -12,11 +12,11 @@ gulpset.confs.pug = {
 
 //----------------------------------------------------------------------------------------------------
 ///
-const gulp = require("gulp");
-const plumber = require("gulp-plumber");
-const pug = require("gulp-pug");
-const changed = require("gulp-changed");
-const beautify = require("gulp-jsbeautifier");
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const pug = require('gulp-pug');
+const changed = require('gulp-changed');
+const beautify = require('gulp-jsbeautifier');
 
 gulpset.tasks.pug = (data, conf) => {
   data = data || gulpset.confs.pug.data || {};

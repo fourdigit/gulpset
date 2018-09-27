@@ -1,18 +1,18 @@
-const gulpset = require("./../../gulpset");
+const gulpset = require('./../../gulpset');
 
 // @verbose
-gulpset.gulp.task("jsdoc", () => gulpset.tasks.jsdoc());
+gulpset.gulp.task('jsdoc', () => gulpset.tasks.jsdoc());
 
 gulpset.confs.jsdoc = {
-  src: [gulpset.paths.src + "**/*.jsx"],
-  dest: gulpset.paths.docs + "jsdoc/"
+  src: [gulpset.paths.src + '**/*.jsx'],
+  dest: gulpset.paths.docs + 'jsdoc/'
 };
 
 //----------------------------------------------------------------------------------------------------
 ///
-const gulp = require("gulp");
-const plumber = require("gulp-plumber");
-const jsdoc = require("gulp-jsdoc3");
+const gulp = require('gulp');
+const plumber = require('gulp-plumber');
+const jsdoc = require('gulp-jsdoc3');
 
 gulpset.tasks.jsdoc = conf => {
   conf = conf || gulpset.confs.jsdoc || {};

@@ -1,15 +1,15 @@
-const gulpset = require("./../../gulpset");
+const gulpset = require('./../../gulpset');
 
 gulpset.confs.watch = [
   {
-    watch: "",
-    run: [""]
+    watch: '',
+    run: ['']
   }
 ];
 
 //----------------------------------------------------------------------------------------------------
 ///
-const gulp = require("gulp");
+const gulp = require('gulp');
 
 gulpset.tasks.watch = (cb, conf) => {
   conf = conf || gulpset.confs.watch || {};
@@ -21,4 +21,4 @@ gulpset.tasks.watch = (cb, conf) => {
 };
 
 // @verbose
-gulpset.gulp.task("watch", cb => gulpset.tasks.watch(cb));
+gulpset.gulp.task('watch', cb => gulpset.tasks.watch(cb));
