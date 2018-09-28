@@ -1,0 +1,16 @@
+<%
+include('/_utils');
+
+const params = ejsUtils.defaultParamsMapper(locals, {
+  children: '<p>コンテンツを挿入してください</p>',
+  label: 'ラベルをいれてください',
+  modifiers: []
+});
+
+const className = ejsUtils.mapModifiers('m-formgroup', params.modifiers);
+%>
+
+<div class="<%- className %>">
+  <label class="m-formgroup__label"><%- params.label%></label>
+  <div class="m-formgroup__body"><%- params.children %></div>
+</div>

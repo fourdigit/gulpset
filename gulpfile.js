@@ -1,8 +1,5 @@
 const gulpset = require('./gulpset/gulpset');
 
-/**
- * development build + watch + browsersync
- */
 gulpset.gulp.task(
   'default',
   gulpset.gulp.series(
