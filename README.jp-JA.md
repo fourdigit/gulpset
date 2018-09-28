@@ -9,7 +9,7 @@ https://github.com/fourdigitdesign/gulpset
 
 
 ### 2. taskを有効化する
-`gulpset > tasks`の中に、XXX.offというフォルダがあります。  
+`gulpset > tasks`の中に、XXX.offというフォルダがあります。
 この中で、プロジェクトにおいてgulpのtaskとして使用したいものの「.off」を削除します。
 
 例えば、ejsを書くのであれば、ejsをhtmlにコンパイルする必要があるので
@@ -43,7 +43,7 @@ https://github.com/fourdigitdesign/gulpset
 gulpset.confs.babel = [{
         src: gulpset.paths.src + "js/source.jsx",
         paths: ["./node_modules", gulpset.paths.src + "js"],
-        dest: gulpset.paths.dest + "assets/app/js/",
+        dest: gulpset.paths.dest + "assets/js/",
         file: "dest.js"
 }];
 ```

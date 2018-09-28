@@ -4,11 +4,11 @@ var gulpset = require('./../../gulpset');
 gulpset.gulp.task('ejs', () => gulpset.tasks.ejs());
 
 gulpset.confs.ejs = {
-  src: [gulpset.paths.src + '**/*.html'],
+  src: [gulpset.paths.src + '**/*.ejs'],
   dest: gulpset.paths.dest,
   data: {},
   options: {
-    root: process.cwd()
+    root: process.cwd() + '/src'
   },
   settings: {
     ext: '.html'
