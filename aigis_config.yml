@@ -1,6 +1,6 @@
 # The types that aigis will scan to document comment
 source_type:
-  - .styl  
+  - .scss
 
 # The directory containing the source files to parse recursively
 source:

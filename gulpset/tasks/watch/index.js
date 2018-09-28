@@ -3,11 +3,11 @@ const gulpset = require('./../../gulpset');
 gulpset.confs.watch = [
   {
     watch: [gulpset.paths.src + '**/*.ejs'],
-    run: ['ejs']
+    run: ['ejs', 'styleguide']
   },
   {
     watch: [gulpset.paths.src + '**/*.scss'],
-    run: ['sass']
+    run: ['sass', 'styleguide']
   }
 ];
 
