@@ -47,6 +47,7 @@
     "gulplog": "^1.0.0",
     "iconv-lite": "^0.4.24",
     "lodash": "^4.17.11",
+    "node-sass-package-importer": "^5.2.0",
     "postcss-sprites": "^4.2.1",
     "prettier": "^1.14.2",
     "webpack": "^4.20.2",

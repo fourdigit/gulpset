@@ -9,3 +9,13 @@ gulpset.gulp.task(
     'browsersync'
   )
 );
+
+gulpset.gulp.task(
+  'production',
+  gulpset.gulp.series(
+    'clean',
+    gulpset.gulp.parallel('copy', 'sasslint', 'imagemin', 'sass', 'scripts', 'ejs', 'styleguide'),
+    'watch',
+    'browsersync'
+  )
+);

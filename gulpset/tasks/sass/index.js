@@ -30,6 +30,7 @@ const autoprefixer = require('autoprefixer');
 const sprites = require('postcss-sprites');
 const sourcemaps = require('gulp-sourcemaps');
 const _ = require('lodash');
+const packageImporter = require('node-sass-package-importer');
 
 gulpset.tasks.sass = (cb, doMinify, browsers, conf) => {
   doMinify = doMinify === true;
@@ -37,11 +38,14 @@ gulpset.tasks.sass = (cb, doMinify, browsers, conf) => {
   if (!Array.isArray(conf)) conf = [conf];
 
   const options = {
-    outputStyle: doMinify ? 'compressed' : 'expanded'
+    outputStyle: doMinify ? 'compressed' : 'expanded',
+    importer: packageImporter({
+      extensions: ['.scss', '.css']
+    })
   };
 
   const streams = conf.map(entry => {
-    const processors = [autoprefixer({ add: false, browsers: [] }), autoprefixer()];
+    const processors = [autoprefixer()];
 
     if (entry.spritesheet) {
       entry.spritesheet = _.merge(
