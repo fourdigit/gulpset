@@ -8,7 +8,7 @@ gulpset.gulp.task('sass-minify', cb => gulpset.tasks.sass(cb, true));
 
 gulpset.confs.sass = [
   {
-    src: gulpset.paths.src + 'assets/css/app.scss',
+    src: gulpset.paths.src + '**/!(_)*.scss',
     dest: gulpset.paths.dest,
     spritesheet: {
       stylesheetPath: gulpset.paths.dest + 'assets/css/',
