@@ -5,7 +5,7 @@ gulpset.gulp.task('copy', () => gulpset.tasks.copy());
 
 gulpset.confs.copy = {
   src: [
-    gulpset.paths.src + '**/*.{html,htm,css,js,ico,json,xml,woff,woff2,ttf,eot,mp4,webm,jpeg,jpg,gif,png,svg,map,mp3}'
+    gulpset.paths.src + '**/*.{html,htm,css,ico,json,xml,woff,woff2,ttf,eot,mp4,webm,jpeg,jpg,gif,png,svg,map,mp3}'
   ],
   dest: gulpset.paths.dest
 };
