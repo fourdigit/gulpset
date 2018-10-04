@@ -52,7 +52,8 @@
     "webpack-stream": "^5.1.1"
   },
   "dependencies": {
-    "@fourdigit/sanitize-4d.css": "^7.0.4"
+    "@fourdigit/sanitize-4d.css": "^7.0.4",
+    "@fourdigit/scss-utilities": "^1.0.0"
   },
   "directories": {
     "doc": "docs"
@@ -75,5 +76,8 @@
   "bugs": {
     "url": "https://github.com/fourdigitdesign/gulpset/issues"
   },
-  "homepage": "https://github.com/fourdigitdesign/gulpset#readme"
+  "homepage": "https://github.com/fourdigitdesign/gulpset#readme",
+  "engines": {
+    "node": ">=8.0.0"
+  }
 }
