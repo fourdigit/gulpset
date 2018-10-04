@@ -1,0 +1,37 @@
+/*
+---
+name: ellipsis-multiline
+category:
+  - base/mixins
+compile: true
+---
+
+使い方
+```scss
+.dummy-omit-text-cls-default {
+  @include u-ellipsis-multiline();
+}
+
+.dummy-omit-text-cls-custom {
+  @include u-ellipsis-multiline(3);
+}
+```
+
+使用例
+```ejs
+  <p class="dummy-omit-text-cls-default">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+  <p class="dummy-omit-text-cls-custom">これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。これはダミーテキストです。</p>
+```
+
+*/
+
+
+
+// 下記はstyleguide用のダミークラスなので、実装では使用しないでください
+.dummy-omit-text-cls-default {
+  @include u-ellipsis-multiline();
+}
+
+.dummy-omit-text-cls-custom {
+  @include u-ellipsis-multiline(3);
+}

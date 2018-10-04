@@ -1,0 +1,43 @@
+if components.length
+	nav
+		h2.aigis-module__heading Components
+		ul.aigis-moduleList
+			each component in components
+				li.aigis-moduleList__item
+					a(href='#' + component.config.name) #{component.config.name}
+	each component in components
+		.aigis-module
+			h2.aigis-module__heading(id=component.config.name) #{component.config.name}
+			.aigis-module__filepath!= component.sourcePath
+			ul.aigis-tags
+				each tag in component.config.tag
+					li.aigis-tags__item(class='aigis-tags__item--' + tag) #{tag}
+			!= component.html
+else
+	h1.a-text-bold Styleguide
+	br
+	h2 Things we use
+	li
+		|We use atomic design approach to organize stylesheets. (see:
+		a(href="http://atomicdesign.bradfrost.com/chapter-2/") http://atomicdesign.bradfrost.com/chapter-2/
+		|)
+	li
+		| We use prefixes to distinguish atomic levels.
+		table
+			tr
+				th prefix
+				th atomic level
+			tr
+				td a-
+				td atoms
+			tr
+				td m-
+				td molecules
+			tr
+				td o-
+				td organisms
+			tr
+				td u-
+				td (utility)
+
+	!= html

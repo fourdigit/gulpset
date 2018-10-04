@@ -1,28 +1,30 @@
-const path = require('path');
-const NODE_ENV = process.env.NODE_ENV ? 'production' : 'development';
-
 module.exports = {
-  mode: NODE_ENV,
+  mode: 'development',
   context: __dirname + '/src',
+  watch: true,
   entry: {
-    libs: './js/libs.es6',
-    app: './js/app.es6'
+    app: './assets/js/app.js'
   },
   output: {
-    filename: '[name].js',
-    path: path.join(__dirname + '/build/assets/app/js/'),
-    publicPath: '/assets/app/js/'
+    filename: 'assets/js/[name].js'
   },
   module: {
     rules: [
       {
-        test: /\.es6$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: [
           {
             loader: 'babel-loader',
             options: {
-              presets: ['env']
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    loose: true
+                  }
+                ]
+              ]
             }
           }
         ]

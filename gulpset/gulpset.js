@@ -9,18 +9,18 @@
  */
 
 // imports
-const gulp = require("gulp-task-doc");
-const glob = require("glob");
-const gutil = require("gulp-util");
+const glob = require('glob');
+const gutil = require('gulp-util');
+const gulp = require('gulp');
 
 // gulpset
 module.exports = {
   gulp: gulp,
   paths: {
-    root: "./",
-    src: "./src/",
-    dest: "./build/",
-    docs: "./docs/"
+    root: './',
+    src: './src/',
+    dest: './build/',
+    docs: './docs/'
   },
   tasks: {},
   confs: {},
@@ -31,19 +31,7 @@ module.exports = {
 };
 
 // load tasks
-const tasks = glob.sync(__dirname + "/tasks/!(*.off)/*.js");
+const tasks = glob.sync(__dirname + '/tasks/!(*.off)/*.js');
 tasks.forEach(val => {
   require(val);
 });
-
-// load config
-require("./config");
-
-// load local settings
-const locals = glob.sync(__dirname + "/local/*.js");
-locals.forEach(val => {
-  require(val);
-});
-
-// @internal
-gulp.task("default", gulp.help());

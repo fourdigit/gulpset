@@ -9,7 +9,7 @@ https://github.com/fourdigitdesign/gulpset
 
 
 ### 2. taskを有効化する
-`gulpset > tasks`の中に、XXX.offというフォルダがあります。  
+`gulpset > tasks`の中に、XXX.offというフォルダがあります。
 この中で、プロジェクトにおいてgulpのtaskとして使用したいものの「.off」を削除します。
 
 例えば、ejsを書くのであれば、ejsをhtmlにコンパイルする必要があるので
@@ -33,23 +33,6 @@ https://github.com/fourdigitdesign/gulpset
 | stylus | .stylを.cssにコンパイル |
 | watch | 指定したファイルの変更監視 |
 
-### 3. `config.js`を設定する
-1. `gulpset > config.js` を開きます。
-2. さらに（２）で「.off」を削除したフォルダの中にある`index.js`を開きます。
-3. このindex.jsの中の`gulpset.confs.babel =`の部分を丸々`config.js`にコピペしていきます。
-
-例）babelの場合
-```
-gulpset.confs.babel = [{
-        src: gulpset.paths.src + "js/source.jsx",
-        paths: ["./node_modules", gulpset.paths.src + "js"],
-        dest: gulpset.paths.dest + "assets/app/js/",
-        file: "dest.js"
-}];
-```
-
-この作業を、有効化した全てのtaskのフォルダについて行います。
-＊カスタマイズしたいのであれば、`config.js`にコピペしてきた`confs`に記述を追加or書き換えを行いましょう。
 
 
 ### 4. watchするファイルを設定する
@@ -72,24 +55,3 @@ gulpset.confs.watch = [{
 ```
 
 なお、この時指定するパスは、各taskのsrcを指定します。
-
-
-### 5. npm install
-1. auto-install がグローバルにインストールされていない場合 `yarn global add auto-install` を実行する
-2. プロジェクトルートで、`yarn auto-install`をします。
-
-### 6. 起動
-1. `gulpfile.js`に、実行するタスクを定義します。
-
-`
-gulpset.gulp.task("dev", function(cb) {
-	runSequence(
-		["babel", "cleancss", …], ← ここ
-		"watch",
-		"browsersync",
-		cb
-	);
-});
-`
-
-2. `gulp dev` すると上述したタスクが実行されます。

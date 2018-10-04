@@ -1,0 +1,17 @@
+<%
+include('/_utils');
+
+const params = ejsUtils.defaultParamsMapper(locals, {
+  tag: 'a',
+  label: 'ボタン',
+  type: 'text',
+  modifiers: []
+});
+
+const className = ejsUtils.mapModifiers('a-textfield', params.modifiers);
+%>
+
+<div class="<%- className %>">
+hello world
+  <input class="a-textfield__body" type="<%- params.type %>" />
+</div>
