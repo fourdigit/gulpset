@@ -4,6 +4,15 @@
 
 Gulp based project skeleton with modular tasks.
 
+## tech stack
+
+- gulp (task-runner)
+- Webpack + babel + eslint (JS)
+- Scss + PostCSS + sasslint (CSS)
+- ejs (HTML)
+- prettier (beatutifier)
+- browser-sync (server)
+
 ## want to develop
 
 1. download this repo
