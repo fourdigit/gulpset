@@ -6,12 +6,12 @@
   "author": "FOURDIGIT Inc., Nobuyuki NISHIGAKI",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.1.0",
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "^7.1.0",
     "@fourdigit/eslint-config-fourdigit": "^1.0.4",
     "@fourdigit/sasslint-config-fourdigit": "^1.0.2",
     "autoprefixer": "^9.1.5",
-    "babel-loader": "^8.0.2",
-    "babel-preset-env": "^1.7.0",
+    "babel-loader": "^8.0.4",
     "browser-sync": "^2.24.7",
     "del": "^3.0.0",
     "eslint": "^5.5.0",
@@ -47,6 +47,8 @@
     "postcss-sprites": "^4.2.1",
     "prettier": "^1.14.2",
     "webpack": "^4.20.2",
+    "webpack-dev-middleware": "^3.4.0",
+    "webpack-hot-middleware": "^2.24.2",
     "webpack-stream": "^5.1.1"
   },
   "dependencies": {
@@ -57,6 +59,7 @@
   },
   "scripts": {
     "start": "gulp",
+    "build:prod": "gulp production",
     "eslint:fix": "yarn eslint --fix"
   },
   "repository": {

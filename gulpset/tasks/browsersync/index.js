@@ -7,7 +7,8 @@ gulpset.confs.browsersync = {
   port: 3000,
   server: {
     baseDir: gulpset.paths.dest,
-    directory: true
+    directory: true,
+    middleware: []
   },
   startPath: '/',
   ghostMode: false
@@ -35,5 +36,12 @@ gulpset.tasks.browsersync = (cb, conf) => {
     });
     return queue;
   };
+
+  gulpset.reload = function() {
+    gulpset.syncs.forEach(function(bs) {
+      bs.reload();
+    });
+  };
+
   cb();
 };

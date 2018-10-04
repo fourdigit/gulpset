@@ -14,8 +14,15 @@ gulpset.gulp.task(
   'production',
   gulpset.gulp.series(
     'clean',
-    gulpset.gulp.parallel('copy', 'sasslint', 'eslint', 'imagemin', 'sass', 'scripts', 'ejs', 'styleguide'),
-    'watch',
-    'browsersync'
+    gulpset.gulp.parallel(
+      'copy',
+      'sasslint',
+      'eslint',
+      'imagemin',
+      'sass-minify',
+      'scripts-minify',
+      'ejs',
+      'styleguide'
+    )
   )
 );

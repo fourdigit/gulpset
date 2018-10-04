@@ -1,27 +1,29 @@
 const gulpset = require('./../../gulpset');
-
-// @verbose
-gulpset.gulp.task('scripts', cb => gulpset.tasks.scripts(cb));
-
-gulpset.confs.scripts = {
-  src: `${gulpset.paths.src}**/*.es6`,
-  dest: gulpset.paths.dest
-};
-
-//----------------------------------------------------------------------------------------------------
-///
 const gulp = require('gulp');
 const plumber = require('gulp-plumber');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const logger = require('gulplog');
-const webpackConfig = require('../../../webpack.config.js');
+const webpackConfig = require('../../../webpack.config');
+const webpackConfigProd = require('../../../webpack.config.prod');
 
-gulpset.tasks.scripts = (callback, conf) => {
-  conf = conf || gulpset.confs.scripts || {};
+// @verbose
+gulpset.gulp.task('scripts', cb => gulpset.tasks.scripts(cb));
+gulpset.gulp.task('scripts-minify', cb => gulpset.tasks.scripts(cb, true));
+
+gulpset.confs.scripts = {
+  src: `${gulpset.paths.src}**/*.{js,jsx}`,
+  dest: gulpset.paths.dest
+};
+
+gulpset.tasks.scripts = (callback, minify = false) => {
+  const conf = gulpset.confs.scripts || {};
   let firstBuildReady = false;
 
-  function done(err, stats) {
+  const done = function(err, stats) {
+    if (!firstBuildReady) {
+      callback();
+    }
     firstBuildReady = true;
 
     if (err) {
@@ -38,13 +40,16 @@ gulpset.tasks.scripts = (callback, conf) => {
         colors: true // Shows colors in the console
       })
     );
-  }
+
+    if (typeof gulpset.reload === 'function') {
+      gulpset.reload();
+    }
+  };
 
   // const config = conf || gulpset.confs.scripts || {};
   return gulp
     .src(conf.src)
     .pipe(plumber())
-    .pipe(webpackStream(webpackConfig, webpack, done))
-    .pipe(gulp.dest(conf.dest))
-    .pipe(gulpset.stream());
+    .pipe(webpackStream(!minify ? webpackConfig : webpackConfigProd, webpack, done))
+    .pipe(gulp.dest(conf.dest));
 };
