@@ -48,7 +48,7 @@
     "prettier": "^1.14.2",
     "webpack": "^4.20.2",
     "webpack-dev-middleware": "^3.4.0",
-    "webpack-hot-middleware": "^2.24.2",
+    "webpack-hot-middleware": "^2.24.3",
     "webpack-stream": "^5.1.1"
   },
   "dependencies": {
