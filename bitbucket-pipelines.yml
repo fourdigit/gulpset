@@ -1,0 +1,31 @@
+# This is a sample build configuration for Javascript.
+# Check our guides at https://confluence.atlassian.com/x/VYk8Lw for more examples.
+# Only use spaces to indent your .yml configuration.
+# -----
+# You can specify a custom docker image from Docker Hub as your build environment.
+# 高速化のため、node+rsyncのカスタムイメージを使用 https://hub.docker.com/r/fourdigit/node-rsync-tagged/
+image: fourdigit/node-rsync-tagged:8.10.0
+clone:
+    depth: 1 # shallow clone http://qiita.com/sonots/items/ce08c30d161ea0b4d5fd
+
+pipelines:
+    branches:
+        'develop':
+            - step:
+                script:
+                    # # テストアップサーバー鍵の登録
+                    # - mkdir ~/.ssh
+                    - echo $PRIVATE_KEY > ~/.ssh/deploy-target_rsa.tmp # Bitbucket上の設定 > PIPELINES > Environment variablesから入れる。登録時Secured推奨。改行を効かせるため、環境変数に入れる前に$base64 gulpset_rsa| pbcopy
+                    - base64 -d ~/.ssh/deploy-target_rsa.tmp > ~/.ssh/deploy-target_rsa
+                    - chmod 400 ~/.ssh/deploy-target_rsa
+                    - eval `ssh-agent` # ssh-agentコマンドを直接たたくのだとうまくいかないので、evalで。参考：　http://qiita.com/sshojiro/items/60982f06c1a0ba88c160
+                    - ssh-add ~/.ssh/deploy-target_rsa
+                    - ssh-keyscan -H $TARGET_HOST >> ~/.ssh/known_hosts
+                    # - echo "$TARGET_HOST ssh-rsa $FINGERPRINT" >> ~/.ssh/known_hosts
+
+                    # yarn, gulpインストールからデプロイまで
+                    - npm i yarn -g
+                    - npm install -g "gulpjs/gulp#4.0"
+                    - yarn
+                    - gulp production
+                    - gulp deployrsync

@@ -42,3 +42,15 @@ Gulp based project skeleton with modular tasks.
 
 - see `/gulpset/tasks/ejs/index.js`
 - some utility functions are included here `/src/_utils.ejs`
+
+### deployrsync settings
+
+- see `/gulpset/tasks/deployrsync/index.js`
+- set target user:hostname to `gulpset.confs.deployrsync.options.hostname`
+- `gulp deployrsync` command will deploy files in build destination folder
+- Want to deploy via bitbucket-pipelines?
+  - enter repository settings on bitbuket web
+    - Pipelines settings > Enable Pipelines
+    - Environment variables > make and set `PRIVATE_KEY` (<-must encrypt!) and `TARGET_HOST`
+  - built files by newly pushed `develop` branch will be deployed to `TARGET_HOST`
+  - if you want to use other branches, rewrite `branches` section on `bitbucket-pipelines.yml`
