@@ -1,6 +1,6 @@
 {
   "name": "gulpset-skeleton",
-  "version": "3.0.0-beta2",
+  "version": "3.0.0",
   "description": "Gulp based project skeleton with modular tasks.",
   "main": "gulpfile.js",
   "author": "FOURDIGIT Inc., Nobuyuki NISHIGAKI",
@@ -53,7 +53,8 @@
   },
   "dependencies": {
     "@fourdigit/sanitize-4d.css": "^7.0.4",
-    "@fourdigit/scss-utilities": "^1.0.0"
+    "@fourdigit/scss-utilities": "^1.0.0",
+    "gulp-rsync": "^0.0.8"
   },
   "directories": {
     "doc": "docs"
@@ -61,7 +62,8 @@
   "scripts": {
     "start": "gulp",
     "build:prod": "gulp production",
-    "eslint:fix": "yarn eslint --fix"
+    "eslint:fix": "yarn eslint --fix",
+    "deployrsync": "gulp deployrsync"
   },
   "repository": {
     "type": "git",
