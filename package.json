@@ -34,6 +34,7 @@
     "gulp-postcss": "^8.0.0",
     "gulp-pug": "^4.0.1",
     "gulp-rename": "^1.4.0",
+    "gulp-rsync": "^0.0.8",
     "gulp-sass": "^4.0.1",
     "gulp-sass-glob": "^1.0.9",
     "gulp-sass-lint": "^1.4.0",
@@ -53,8 +54,7 @@
   },
   "dependencies": {
     "@fourdigit/sanitize-4d.css": "^7.0.4",
-    "@fourdigit/scss-utilities": "^1.0.0",
-    "gulp-rsync": "^0.0.8"
+    "@fourdigit/scss-utilities": "^1.0.0"
   },
   "directories": {
     "doc": "docs"
