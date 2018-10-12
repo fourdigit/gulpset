@@ -11,7 +11,8 @@ Gulp based project skeleton with modular tasks.
 - Scss + PostCSS + sasslint (CSS)
 - ejs (HTML)
 - prettier (beatutifier)
-- browser-sync (server)
+- browser-sync (dev server)
+- rsync (deploy)
 
 ## want to develop
 
