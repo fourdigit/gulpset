@@ -1,6 +1,6 @@
 {
   "name": "gulpset-skeleton",
-  "version": "3.0.0-beta2",
+  "version": "3.0.0",
   "description": "Gulp based project skeleton with modular tasks.",
   "main": "gulpfile.js",
   "author": "FOURDIGIT Inc., Nobuyuki NISHIGAKI",
