@@ -6,7 +6,8 @@ Gulp based project skeleton with modular tasks.
 
 ## tech stack
 
-- gulp (task-runner)
+- Node.js (v8 or later is supported)
+- gulp v4 (task-runner)
 - Webpack + babel + eslint (JS)
 - Scss + PostCSS + sasslint (CSS)
 - ejs (HTML)
@@ -14,9 +15,9 @@ Gulp based project skeleton with modular tasks.
 - browser-sync (dev server)
 - rsync (deploy)
 
-## want to develop
+## starting development
 
-1. download this repo
+1. download this repo from [releases](https://github.com/fourdigit/gulpset/releases)
 2. `yarn`
 3. `yarn start`
 
@@ -35,6 +36,21 @@ Gulp based project skeleton with modular tasks.
 1. `/.eslintrc`: modify `@fourdigit/eslint-config-fourdigit/esnext` => `@fourdigit/eslint-config-fourdigit/base`
 2. modify `copy` task (add `js` ext)
 3. remove `scripts` task from `gulpfile.js`
+
+#### development & production
+
+Gulpset has 2 webpack settings & corresponding 2 gulp tasks.
+
+- webpack-watch
+  - ./webpacck.config.js
+  - `mode: development`
+  - `process.env.NODE_ENV === 'development'`
+
+- webpack
+  - webpack.config.prod.js
+  - `mode: production` => webpack 4 automatically optimize your code for production.
+  - `process.env.NODE_ENV === 'production'` => you can use this environmental variable for environmental settings e.g. API key, endpoints.
+
 
 ### scss settings
 

@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [3.0.2] - 2019-10-22
 
 - aigisのバージョンをあげる(ejsのincludeのネスティングに対応)
+- readmeに、webpackのmodeについての説明を追加
 
 ## [3.0.1] - 2018-10-12
 
