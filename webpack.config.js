@@ -11,7 +11,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
           {
@@ -23,7 +23,8 @@ module.exports = {
                   {
                     loose: true
                   }
-                ]
+                ],
+                '@babel/preset-react'
               ]
             }
           }
