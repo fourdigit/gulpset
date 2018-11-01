@@ -18,9 +18,8 @@ const gulpset = require('./../../gulpset');
 const webpackConfig = require('../../../webpack.config.jsx');
 const PLUGIN_NAME = 'jsx-static-render';
 
-
 // @verbose
-gulpset.gulp.task('jsx-static', (cb) => gulpset.tasks.jsx(cb));
+gulpset.gulp.task('jsx-static', cb => gulpset.tasks.jsx(cb));
 
 gulpset.confs.jsx = {
   src: `${gulpset.paths.src}**/*.html.jsx`,
@@ -35,7 +34,7 @@ gulpset.tasks.jsx = (cb, conf) => {
 
   let firstBuildReady = false;
 
-  const done = function (err, stats) {
+  const done = function(err, stats) {
     if (!firstBuildReady && typeof cb === 'function') {
       cb();
     }
