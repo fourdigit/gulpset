@@ -12,7 +12,7 @@ gulpset.gulp.task('scripts', cb => gulpset.tasks.scripts(cb));
 gulpset.gulp.task('scripts-minify', cb => gulpset.tasks.scripts(cb, true));
 
 gulpset.confs.scripts = {
-  src: `${gulpset.paths.src}**/*.{js}`,
+  src: `${gulpset.paths.src}**/*.{js,jsx}`,
   dest: gulpset.paths.dest
 };
 
