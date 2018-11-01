@@ -14,31 +14,29 @@ const webpackStream = require('webpack-stream');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 
-const PLUGIN_NAME = 'gulp-jsx-render';
 const gulpset = require('./../../gulpset');
-const webpackConfig = require('../../../webpack.config');
-const webpackConfigProd = require('../../../webpack.config.prod');
+const webpackConfig = require('../../../webpack.config.jsx');
+const PLUGIN_NAME = 'jsx-static-render';
 
 
 // @verbose
-gulpset.gulp.task('jsx', () => gulpset.tasks.jsx());
+gulpset.gulp.task('jsx-static', () => gulpset.tasks.jsx());
 
 gulpset.confs.jsx = {
-  src: `${gulpset.paths.src}jsx/pages/**/*.jsx`,
+  src: `${gulpset.paths.src}**/*.html.jsx`,
   dest: gulpset.paths.dest,
-  data: {},
   options: {
     root: process.cwd() + '/src'
   }
 };
 
-gulpset.tasks.jsx = (conf, cb, minify = false) => {
+gulpset.tasks.jsx = (conf, cb) => {
   conf = conf || gulpset.confs.jsx || {};
 
   let firstBuildReady = false;
 
   const done = function (err, stats) {
-    if (!firstBuildReady && cb) {
+    if (!firstBuildReady && typeof cb === 'function') {
       cb();
     }
     firstBuildReady = true;
@@ -54,26 +52,14 @@ gulpset.tasks.jsx = (conf, cb, minify = false) => {
         chunks: false, // Makes the build much quieter
         modules: false,
         colors: true, // Shows colors in the console
-        // Add errors
         errors: true,
-        // Add details to errors (like resolving log)
         // errorDetails: true,
-        entrypoints: true
       }));
 
     if (typeof gulpset.reload === 'function') {
       gulpset.reload();
     }
   };
-
-  delete webpackConfig.entry;
-
-  webpackConfig.output = { libraryTarget: 'commonjs2' };
-  webpackConfig.resolve = webpackConfig.resolve || {};
-  webpackConfig.resolve.extensions = webpackConfig.resolve.extensions || [];
-  const extensions = webpackConfig.resolve.extensions
-  if(extensions.indexOf('jsx') === -1) extensions.push('.jsx');
-  if(extensions.indexOf('js') === -1) extensions.push('.js');
 
   return gulp
     .src(conf.src)
@@ -83,38 +69,32 @@ gulpset.tasks.jsx = (conf, cb, minify = false) => {
         const dir = path.dirname(file.path);
         const name = path.basename(file.path, path.extname(file.path));
         const dest = path.join(dir, name).replace(conf.options.root, '');
-        // logger.info(dest);
         return dest;
       }))
-    .pipe(webpackStream(!minify ? webpackConfig : webpackConfigProd, webpack, done))
+    .pipe(webpackStream(webpackConfig, webpack, done))
     .pipe(through.obj(function(file, enc, cb) {
         try {
-          const jsContent = file.contents.toString(enc);
-          // console.log(file.path, jsContent);
+          if (file.isStream()) {
+            throw 'Stream support is not implemented!'
+          }
 
+          const jsContent = file.contents.toString(enc);
+          // console.log(jsContent);
           //http://fredkschott.com/post/2014/06/require-and-the-module-system/
           const mod = new module.constructor();
           mod._compile(jsContent, file.path);
 
           const component = mod.exports;
-          // console.log(Object.keys(component));
-          // console.log(component);
-
           const element = React.createElement(component.default || component, {});
-          if (file.isBuffer()) {
-            const html = ReactDOMServer.renderToStaticMarkup(element);
-            file.contents = Buffer.from(html, 'utf8');
-          } else if (file.isStream()) {
-            file.contents = ReactDOMServer.renderToStaticNodeStream(element);
-          }
+          const html = ReactDOMServer.renderToStaticMarkup(element);
+          file.contents = Buffer.from(html, 'utf8');
         } catch (err) {
           this.emit('error', new gutil.PluginError(PLUGIN_NAME, err, { fileName: file.path }));
         }
         cb(null, file);
       }))
-    .pipe(rename({ extname: '.html' }))
+    .pipe(rename({ extname: '' }))
     .pipe(beautify({ indentSize: 2 }))
     .pipe(gulp.dest(conf.dest))
     .pipe(gulpset.stream());
 };
-

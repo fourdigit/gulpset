@@ -12,7 +12,7 @@ gulpset.gulp.task(
       'sass',
       'scripts',
       'ejs',
-      'jsx',
+      'jsx-static',
       'styleguide'
     ),
     'watch',
@@ -33,7 +33,7 @@ gulpset.gulp.task(
       'sass-minify',
       'scripts-minify',
       'ejs',
-      'jsx',
+      'jsx-static',
       'styleguide'
     )
   )
