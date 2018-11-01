@@ -21,7 +21,7 @@ const webpackConfigProd = require('../../../webpack.config.prod');
 
 
 // @verbose
-gulpset.gulp.task('jsx', () => gulpset.tasks.jsx());
+gulpset.gulp.task('jsx-static', () => gulpset.tasks.jsx());
 
 gulpset.confs.jsx = {
   src: `${gulpset.paths.src}jsx/pages/**/*.jsx`,
