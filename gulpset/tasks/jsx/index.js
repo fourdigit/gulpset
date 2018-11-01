@@ -20,7 +20,7 @@ const PLUGIN_NAME = 'jsx-static-render';
 
 
 // @verbose
-gulpset.gulp.task('jsx-static', () => gulpset.tasks.jsx());
+gulpset.gulp.task('jsx-static', (cb) => gulpset.tasks.jsx(cb));
 
 gulpset.confs.jsx = {
   src: `${gulpset.paths.src}**/*.html.jsx`,
@@ -30,7 +30,7 @@ gulpset.confs.jsx = {
   }
 };
 
-gulpset.tasks.jsx = (conf, cb) => {
+gulpset.tasks.jsx = (cb, conf) => {
   conf = conf || gulpset.confs.jsx || {};
 
   let firstBuildReady = false;
@@ -48,13 +48,15 @@ gulpset.tasks.jsx = (conf, cb) => {
 
     // https://webpack.js.org/api/node/#stats-object
     // https://webpack.js.org/configuration/stats/
-    logger[stats.hasErrors() ? 'error' : 'info'](stats.toString({
+    logger[stats.hasErrors() ? 'error' : 'info'](
+      stats.toString({
         chunks: false, // Makes the build much quieter
         modules: false,
         colors: true, // Shows colors in the console
-        errors: true,
+        errors: true
         // errorDetails: true,
-      }));
+      })
+    );
 
     if (typeof gulpset.reload === 'function') {
       gulpset.reload();
@@ -65,17 +67,20 @@ gulpset.tasks.jsx = (conf, cb) => {
     .src(conf.src)
     .pipe(plumber())
     .pipe(changed(conf.dest))
-    .pipe(named(function(file) {
+    .pipe(
+      named(function(file) {
         const dir = path.dirname(file.path);
         const name = path.basename(file.path, path.extname(file.path));
         const dest = path.join(dir, name).replace(conf.options.root, '');
         return dest;
-      }))
+      })
+    )
     .pipe(webpackStream(webpackConfig, webpack, done))
-    .pipe(through.obj(function(file, enc, cb) {
+    .pipe(
+      through.obj(function(file, enc, cb) {
         try {
           if (file.isStream()) {
-            throw 'Stream support is not implemented!'
+            throw 'Stream support is not implemented!';
           }
 
           const jsContent = file.contents.toString(enc);
@@ -92,7 +97,8 @@ gulpset.tasks.jsx = (conf, cb) => {
           this.emit('error', new gutil.PluginError(PLUGIN_NAME, err, { fileName: file.path }));
         }
         cb(null, file);
-      }))
+      })
+    )
     .pipe(rename({ extname: '' }))
     .pipe(beautify({ indentSize: 2 }))
     .pipe(gulp.dest(conf.dest))
