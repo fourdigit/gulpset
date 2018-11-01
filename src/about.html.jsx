@@ -1,10 +1,9 @@
-
 import React from 'react';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 
-import App from '../components/App';
-import rootReducer from '../reducers';
+import App from './jsx/components/App';
+import rootReducer from './jsx/reducers';
 
 const store = createStore(rootReducer);
 
@@ -16,14 +15,11 @@ const IndexPage = () => (
       <title>Redux Todos Example</title>
     </head>
     <body>
-      <div id="root">
-        <Provider store={store}>
-          <App />
-        </Provider>
-      </div>
+      <Provider store={store}>
+        <App />
+      </Provider>
     </body>
   </html>
 );
 
-export default IndexPage
-
+export default IndexPage;
