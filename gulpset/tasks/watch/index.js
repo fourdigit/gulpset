@@ -10,7 +10,7 @@ gulpset.confs.watch = [
     run: ['sass', 'styleguide']
   },
   {
-    watch: [gulpset.paths.src + '**/*.js'],
+    watch: [gulpset.paths.src + '**/*.{js,jsx}'],
     run: ['eslint']
   }
 ];
