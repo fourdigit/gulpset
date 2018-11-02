@@ -33,7 +33,7 @@ gulpset.gulp.task(
       'sass-minify',
       'scripts-minify',
       'ejs',
-      'jsx-static',
+      'jsx-static:prod',
       'styleguide'
     )
   )

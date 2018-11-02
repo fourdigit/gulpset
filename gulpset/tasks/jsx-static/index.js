@@ -21,16 +21,28 @@ const PLUGIN_NAME = 'jsx-static-render';
 // @verbose
 gulpset.gulp.task('jsx-static', cb => gulpset.tasks.jsx(cb));
 
+gulpset.gulp.task('jsx-static:prod', cb => gulpset.tasks.jsx(cb, {
+  ...gulpset.confs.jsx,
+  prod: true
+}));
+
 gulpset.confs.jsx = {
   src: `${gulpset.paths.src}**/*.html.jsx`,
   dest: gulpset.paths.dest,
   options: {
     root: process.cwd() + '/src'
-  }
+  },
+  prod: false
 };
 
 gulpset.tasks.jsx = (cb, conf) => {
   conf = conf || gulpset.confs.jsx || {};
+
+  let runtimeWebpackConfig = { ...webpackConfig };
+  if (conf.prod) {
+    runtimeWebpackConfig.mode = 'production';
+    runtimeWebpackConfig.watch = false;
+  }
 
   let firstBuildReady = false;
 
@@ -74,7 +86,7 @@ gulpset.tasks.jsx = (cb, conf) => {
         return dest;
       })
     )
-    .pipe(webpackStream(webpackConfig, webpack, done))
+    .pipe(webpackStream(runtimeWebpackConfig, webpack, done))
     .pipe(
       through.obj(function(file, enc, cb) {
         try {
