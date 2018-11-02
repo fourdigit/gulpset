@@ -18,6 +18,11 @@ const gulpset = require('./../../gulpset');
 const webpackConfig = require('../../../webpack.config.jsx');
 const PLUGIN_NAME = 'jsx-static-render';
 
+
+global.GLOBAL_REACT = React;
+global.GLOBAL_REACTDOM = require('react-dom');
+
+
 // @verbose
 gulpset.gulp.task('jsx-static', cb => gulpset.tasks.jsx(cb));
 
