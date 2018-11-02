@@ -4,6 +4,15 @@ include('/_utils');
 // このブロックでは、このコンポーネントのdefault valueを設定します。
 // include('/_head', {title: 'xxxxx'}) のような形でオプションを渡した時には、それが利用され、
 // 渡されていない時には下記のデフォルト値が使われます。
+/*
+例）
+titleに "default title" というデフォルト値が設定されていた場合、
+include('/_head', {title: 'aaa'}) => 'aaa'
+include('/_head', {title: ''}) => ''
+include('/_head', {title: null}) => null
+include('/_head', {}) => 'default title'
+include('/_head', {title: undefined}) => 'default title'
+*/
 
 const params = ejsUtils.defaultParamsMapper(locals, {
   title: '共通タイトル',
