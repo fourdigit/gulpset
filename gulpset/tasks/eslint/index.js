@@ -10,7 +10,7 @@ gulpset.gulp.task('eslint-fix', function() {
 });
 
 gulpset.confs.eslint = {
-  src: [gulpset.paths.src + '**/*.{js,jsx}']
+  src: [gulpset.paths.src + '**/*.{js,jsx,tsx}']
 };
 
 //----------------------------------------------------------------------------------------------------

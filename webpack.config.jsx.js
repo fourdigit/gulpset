@@ -9,7 +9,7 @@ module.exports = {
     libraryTarget: 'assign'
   },
   resolve: {
-    extensions: ['.jsx', '.js']
+    extensions: ['.ts', '.tsx', '.jsx', '.js', '.json']
   },
   externals: {
     react: 'GLOBAL_REACT',
