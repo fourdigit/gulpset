@@ -10,8 +10,7 @@ ejsUtils = {};
 ejsUtils.defaultParamsMapper = (locals, defaultParams) => {
   const result = {};
   Object.keys(defaultParams).forEach(localKey => {
-    result[localKey] = (locals[localKey] && locals[localKey].length && locals[localKey].length > 0) ? locals[localKey] : defaultParams[localKey]
-  });
+    result[localKey] = typeof locals[localKey] === "undefined" ? defaultParams[localKey] : locals[localKey]  });
   return result;
 }
 
