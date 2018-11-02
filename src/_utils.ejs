@@ -7,11 +7,20 @@ ejsのユーティリティ関数置き場。
 ejsUtils = {};
 
 // partialに渡されたデータと、デフォルトの値を付き合わせて返却。_head.ejsの利用例を参照
+/*
+例）
+titleに "default title" というデフォルト値が設定されていた場合、
+include('/_head', {title: 'aaa'}) => 'aaa'
+include('/_head', {title: ''}) => ''
+include('/_head', {title: null}) => null
+include('/_head', {}) => 'default title'
+include('/_head', {title: undefined}) => 'default title'
+*/
+
 ejsUtils.defaultParamsMapper = (locals, defaultParams) => {
   const result = {};
   Object.keys(defaultParams).forEach(localKey => {
-    result[localKey] = (locals[localKey] && locals[localKey].length && locals[localKey].length > 0) ? locals[localKey] : defaultParams[localKey]
-  });
+    result[localKey] = typeof locals[localKey] === "undefined" ? defaultParams[localKey] : locals[localKey]  });
   return result;
 }
 
