@@ -7,7 +7,7 @@ gulpset.confs.watch = [
   },
   {
     watch: [gulpset.paths.src + '**/*.scss'],
-    run: ['sass', 'styleguide']
+    run: ['sass', 'stylelint', 'styleguide']
   },
   {
     watch: [gulpset.paths.src + '**/*.js'],

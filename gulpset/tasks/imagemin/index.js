@@ -1,4 +1,4 @@
-var gulpset = require('./../../gulpset');
+const gulpset = require('./../../gulpset');
 
 // @verbose
 gulpset.gulp.task('imagemin', () => gulpset.tasks.imagemin());
