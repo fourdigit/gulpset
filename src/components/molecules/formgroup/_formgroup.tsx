@@ -7,7 +7,7 @@ export interface FormgroupProps {
   children?: any;
 }
 
-export default ({
+export const FormGroup = ({
   label = 'ラベルをいれてください',
   modifiers = [],
   children = <p>コンテンツを挿入してください</p>
