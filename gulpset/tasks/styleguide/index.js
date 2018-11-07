@@ -1,16 +1,22 @@
 const gulpset = require('./../../gulpset');
-const gulp = require('gulp');
 
-// @verbose
-gulpset.gulp.task('styleguide', () => gulpset.tasks.styleguide());
+// // @verbose
+gulpset.gulp.task('styleguide', () => gulpset.tasks.styleguide('dev'));
+gulpset.gulp.task('styleguide:prod', () => gulpset.tasks.styleguide('prod'));
 
-gulpset.confs.styleguide = { src: './aigis_config.yml' };
+const { commands, args: defaultArgs } = require('docz-core');
+const execDevCommand = async args => commands.dev(args);
+const execBuildCommand = async args => commands.build(args);
 
-//----------------------------------------------------------------------------------------------------
-///
-const aigis = require('gulp-aigis');
-
-gulpset.tasks.styleguide = conf => {
-  const config = conf || gulpset.confs.styleguide || {};
-  return gulp.src(config.src).pipe(aigis());
+gulpset.tasks.styleguide = mod => {
+  const Config = {};
+  const fakeYargs = {
+    positional: (key, opt) => {
+      Config[key] = opt.default;
+    }
+  };
+  // https://github.com/pedronauck/docz/blob/be94b0e/packages/docz-core/src/commands/args.ts#L96
+  defaultArgs(mod === 'dev' ? 'development' : 'production')(fakeYargs);
+  return mod === 'dev' ? execDevCommand(Config) : execBuildCommand(Config);
+  // return execCommand(mod === 'dev' ? 'dev' : 'build')(Config);
 };

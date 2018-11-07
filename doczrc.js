@@ -4,6 +4,5 @@ module.exports = {
   typescript: true,
   src: './src',
   indexHtml: './gulpset/tasks/styleguide/doczTemplate.html',
-  dest: '/build/styleguide/docz/',
-  base: '/styleguide/docz/'
+  port: 4000
 };
