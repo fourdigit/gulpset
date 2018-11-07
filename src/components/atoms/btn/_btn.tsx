@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultProps, mapModifiers } from 'components/_utils';
+import { DefaultProps, mapModifiers } from '../../_utils';
 
 export interface BtnProps extends DefaultProps {
   children?: string;
