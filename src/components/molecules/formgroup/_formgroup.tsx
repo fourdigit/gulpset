@@ -1,9 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 import { DefaultProps, mapModifiers } from 'components/_utils';
 
-export interface FormgroupProps {
-  label?: string,
-  modifiers: string[];
+export interface FormgroupProps extends DefaultProps {
+  label?: string;
   children?: any;
 }
 
@@ -17,3 +16,5 @@ export const FormGroup = ({
     <div className="m-formgroup__body">{children}</div>
   </div>
 );
+
+export default FormGroup;

@@ -1,14 +1,15 @@
 import * as React from 'react';
 
 interface HeaderProps {
-  type: 'backspace' | 'enter';
+  dummyprop1: string;
+  dummyprop2: number;
+  dummyprop3: Date;
 }
 
-class Header extends React.Component<HeaderProps, object> {
-  public render() {
-    return <header className='o-header'>header sample</header>;
+export class Header extends React.Component<HeaderProps, {}> {
+  render() {
+    return <header className="o-header">{this.props.children}</header>;
   }
 }
 
 export default Header;
-
