@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Prettier との連携を鑑みて、sass-lint をやめて stylelint に変更
   - https://qiita.com/tkiryu/items/016aa9ef8a25b631e7e6
+  - https://devblog.thebase.in/entry/2018/06/06/110000
   - VS Code の Workspace Setting を追加
 
 ## [3.0.2] - 2019-10-22
