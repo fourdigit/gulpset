@@ -10,7 +10,7 @@ export interface LayoutProps {
   children?: any;
 }
 
-export default ({
+export const Layout = ({
   title = '共通タイトル',
   description = '共通description',
   keywords = '共通,keyword',
