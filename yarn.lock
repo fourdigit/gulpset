@@ -607,11 +607,6 @@
   resolved "https://registry.yarnpkg.com/@fourdigit/sanitize-4d.css/-/sanitize-4d.css-7.0.4.tgz#9e6b129620a47f5201627bd6c4ade34627fcfe6e"
   integrity sha512-t/vDje8HJcpYe0Mzn0AFKoSKQ216mKVf6TU+VXKCnVcTorulH2lbphSw/H4caf9uoj0yQxJBe6kISopr8eqMaA==
 
-"@fourdigit/sasslint-config-fourdigit@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@fourdigit/sasslint-config-fourdigit/-/sasslint-config-fourdigit-1.0.2.tgz#bd66481a0d312417fd01c97a95661381b58e8284"
-  integrity sha512-HinQEYmO/HCXNsK3odPBQYlbOh85SKl9HWxmwcoiD9CdDEDJ7byH47bgZhVshVndmhmfc2EyzobhZ4OtwC5cdw==
-
 "@fourdigit/scss-utilities@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@fourdigit/scss-utilities/-/scss-utilities-1.0.0.tgz#ced860acc25e8fb18d1c2633ebd2fa192487aae2"

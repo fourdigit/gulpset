@@ -7,7 +7,7 @@ module.exports = {
     'order/order': ['custom-properties', 'declarations'], // アルファベット順でソートする
     'order/properties-alphabetical-order': true,
     indentation: 2,
-    'string-quotes': 'double',
+    'string-quotes': 'single', // js, prettierと統一
     'color-hex-case': 'lower',
     'color-hex-length': 'long',
     'color-named': 'never',
