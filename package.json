@@ -75,8 +75,6 @@
   },
   "scripts": {
     "start": "gulp",
-    "docz:prod": "docz",
-    "docz": "docz dev",
     "build:prod": "gulp production",
     "eslint:fix": "yarn eslint --fix",
     "deployrsync": "gulp deployrsync"

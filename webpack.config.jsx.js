@@ -1,3 +1,4 @@
+const path = require('path');
 const devConfig = require('./webpack.config');
 
 module.exports = {
@@ -9,7 +10,8 @@ module.exports = {
     libraryTarget: 'assign'
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.jsx', '.js', '.json']
+    extensions: ['.ts', '.tsx', '.jsx', '.js', '.json'],
+    modules: [path.join(__dirname, './src')]
   },
   externals: {
     react: 'GLOBAL_REACT',
