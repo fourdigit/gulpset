@@ -1,4 +1,4 @@
-var gulpset = require('./../../gulpset');
+const gulpset = require('./../../gulpset');
 
 // @verbose
 gulpset.gulp.task('ejs', () => gulpset.tasks.ejs());

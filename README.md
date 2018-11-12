@@ -8,8 +8,8 @@ Gulp based project skeleton with modular tasks.
 
 - Node.js (v8 or later is supported)
 - gulp v4 (task-runner)
-- Webpack + babel + eslint (JS)
-- Scss + PostCSS + sasslint (CSS)
+- webpack + babel + eslint (JS)
+- Scss + PostCSS + stylelint (CSS)
 - ejs (HTML)
 - prettier (beatutifier)
 - browser-sync (dev server)
@@ -42,6 +42,7 @@ Gulp based project skeleton with modular tasks.
 Gulpset has 2 webpack settings & corresponding 2 gulp tasks.
 
 - webpack-watch
+
   - ./webpacck.config.js
   - `mode: development`
   - `process.env.NODE_ENV === 'development'`
@@ -50,7 +51,6 @@ Gulpset has 2 webpack settings & corresponding 2 gulp tasks.
   - webpack.config.prod.js
   - `mode: production` => webpack 4 automatically optimize your code for production.
   - `process.env.NODE_ENV === 'production'` => you can use this environmental variable for environmental settings e.g. API key, endpoints.
-
 
 ### scss settings
 

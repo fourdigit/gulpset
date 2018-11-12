@@ -1,12 +1,9 @@
 @import '~@fourdigit/sanitize-4d.css';
 @import '~@fourdigit/scss-utilities';
-
-// SASS
-@import "variables";
-@import "functions";
-@import "mixins";
-
-// @keyframes
-@import "keyframes";
-
+/* SASS */
+@import 'variables';
+@import 'functions';
+@import 'mixins';
+/* @keyframes */
+@import 'keyframes';
 @import '../../components/**/*';
