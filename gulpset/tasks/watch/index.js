@@ -3,7 +3,7 @@ const gulpset = require('./../../gulpset');
 gulpset.confs.watch = [
   {
     watch: [gulpset.paths.src + '**/*.scss'],
-    run: ['sass']
+    run: ['sass', 'stylelint']
   },
   {
     watch: [gulpset.paths.src + '**/*.{js,jsx,tsx}'],

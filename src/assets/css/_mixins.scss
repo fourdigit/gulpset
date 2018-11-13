@@ -24,10 +24,8 @@ compile: true
 ```
 
 */
+/* 下記はstyleguide用のダミークラスなので、実装では使用しないでください */
 
-
-
-// 下記はstyleguide用のダミークラスなので、実装では使用しないでください
 .dummy-omit-text-cls-default {
   @include u-ellipsis-multiline();
 }
