@@ -3,7 +3,7 @@ module.exports = {
   description: 'Gulp based project skeleton with modular tasks.',
   typescript: true,
   src: './src',
-  indexHtml: './gulpset/tasks/styleguide/doczTemplate.html',
+  indexHtml: './src/styleguide/doczTemplate.html',
   port: 4000,
   hashRouter: true,
   base: '/styleguide/',
