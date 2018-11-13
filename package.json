@@ -16,6 +16,7 @@
     "babel-loader": "^8.0.4",
     "browser-sync": "^2.24.7",
     "del": "^3.0.0",
+    "docz": "^0.12.9",
     "eslint": "^5.5.0",
     "event-stream": "^4.0.0",
     "fast-csv": "^2.4.1",
@@ -44,6 +45,7 @@
     "gulp-template": "^5.0.0",
     "gulp-util": "^3.0.8",
     "gulplog": "^1.0.0",
+    "http-proxy-middleware": "^0.19.0",
     "iconv-lite": "^0.4.24",
     "lodash": "^4.17.11",
     "node-sass-package-importer": "^5.2.0",
@@ -64,7 +66,9 @@
   },
   "dependencies": {
     "@fourdigit/sanitize-4d.css": "^7.0.4",
-    "@fourdigit/scss-utilities": "^1.0.0"
+    "@fourdigit/scss-utilities": "^1.0.0",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9"
   },
   "directories": {
     "doc": "docs"

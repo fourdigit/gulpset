@@ -10,5 +10,9 @@ const del = require('del');
 
 gulpset.tasks.clean = path => {
   path = path || gulpset.paths.dest;
-  return del(path);
+  return del(path).then(() => {
+    if (typeof gulpset.paths.docz === 'string') {
+      return del(gulpset.paths.docz);
+    }
+  });
 };

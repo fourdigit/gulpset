@@ -34,7 +34,7 @@ gulpset.gulp.task(
       'scripts-minify',
       'ejs',
       'jsx-static:prod',
-      'styleguide'
+      'styleguide:prod'
     )
   )
 );

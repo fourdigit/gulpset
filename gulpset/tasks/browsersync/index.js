@@ -1,3 +1,4 @@
+const proxy = require('http-proxy-middleware');
 const gulpset = require('./../../gulpset');
 
 // @verbose
@@ -21,6 +22,20 @@ const gutil = require('gulp-util');
 
 gulpset.tasks.browsersync = (cb, conf) => {
   conf = conf || gulpset.confs.browsersync || {};
+
+  // proxy to docz dev server
+  // conf.server.middleware.push(proxy(['/styleguide', '/static'], {
+  conf.server.middleware.push(proxy((pathanme, req) => {
+    return pathanme.startsWith('/styleguide')
+    || pathanme.startsWith('/static')
+    || pathanme.endsWith('.hot-update.js')
+    || pathanme.endsWith('.hot-update.json');
+  }, {
+    target: 'http://localhost:4000/',
+    changeOrigin: true, // for vhosted sites, changes host header to match to target's host
+    logLevel: 'error' // 'debug' | 'info' | 'warn' | 'error' | 'silent'
+  }));
+
   if (!Array.isArray(conf)) conf = [conf];
 
   conf.forEach(conf => {
