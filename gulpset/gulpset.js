@@ -20,7 +20,8 @@ module.exports = {
     root: './',
     src: './src/',
     dest: './build/',
-    docs: './docs/'
+    docs: './docs/',
+    docz: './.docz/'
   },
   tasks: {},
   confs: {},

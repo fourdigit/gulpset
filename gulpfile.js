@@ -4,7 +4,7 @@ gulpset.gulp.task(
   'default',
   gulpset.gulp.series(
     'clean',
-    gulpset.gulp.parallel('copy', 'stylelint', 'eslint', 'imagemin', 'sass', 'scripts', 'ejs', 'styleguide'),
+    gulpset.gulp.parallel('copy', 'stylelint', 'eslint', 'imagemin', 'sass', 'scripts', 'jsx-static', 'styleguide'),
     'watch',
     'browsersync'
   )
@@ -21,8 +21,8 @@ gulpset.gulp.task(
       'imagemin',
       'sass-minify',
       'scripts-minify',
-      'ejs',
-      'styleguide'
+      'jsx-static:prod',
+      'styleguide:prod'
     )
   )
 );

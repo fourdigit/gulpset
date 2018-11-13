@@ -1,4 +1,5 @@
 {
+  "typescript.preferences.importModuleSpecifier": "non-relative",
   "editor.formatOnPaste": true,
   "editor.formatOnSave": true,
   "prettier.stylelintIntegration": true

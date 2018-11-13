@@ -11,7 +11,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: [
           {
@@ -23,12 +23,15 @@ module.exports = {
                   {
                     loose: true
                   }
-                ]
+                ],
+                '@babel/preset-react'
               ]
             }
           }
         ]
-      }
+      },
+      // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' }
     ]
   }
 };

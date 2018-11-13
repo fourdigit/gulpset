@@ -1,0 +1,19 @@
+---
+name: FormGroup
+route: /molecules/formgroup
+menu: Molecules
+---
+
+import { Playground, PropsTable } from 'docz'
+import { FormGroup } from './_formgroup.tsx'
+
+
+# FormGroup
+
+<PropsTable of={FormGroup} />
+
+<Playground>
+  <FormGroup label="Email" modifiers={['long']}>
+    <input type="email" />
+  </FormGroup>
+</Playground>

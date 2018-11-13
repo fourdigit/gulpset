@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [4.0.0] - 2019-11-13
+
+- TSX を、静的 HTML のテンプレート構文として採用
+- EJS, Pug のサポートを停止
+- aigis の代わりに Docz を styleguide に採用
+
 ## [3.1.0] - 2019-11-12
 
 - Prettier との連携を鑑みて、sass-lint をやめて stylelint に変更
