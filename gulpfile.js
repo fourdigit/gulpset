@@ -4,22 +4,11 @@ gulpset.gulp.task(
   'default',
   gulpset.gulp.series(
     'clean',
-    gulpset.gulp.parallel(
-      'copy',
-      'sasslint',
-      'eslint',
-      'imagemin',
-      'sass',
-      'scripts',
-      'ejs',
-      'jsx-static',
-      'styleguide'
-    ),
+    gulpset.gulp.parallel('copy', 'sasslint', 'eslint', 'imagemin', 'sass', 'scripts', 'jsx-static', 'styleguide'),
     'watch',
     'browsersync'
   )
 );
-
 
 gulpset.gulp.task(
   'production',
@@ -32,7 +21,6 @@ gulpset.gulp.task(
       'imagemin',
       'sass-minify',
       'scripts-minify',
-      'ejs',
       'jsx-static:prod',
       'styleguide:prod'
     )
