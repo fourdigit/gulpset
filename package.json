@@ -72,6 +72,9 @@
     "eslint:fix": "yarn eslint --fix",
     "deployrsync": "gulp deployrsync"
   },
+  "bin": {
+    "create-gulpset-skeleton": "gulpset/init.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fourdigitdesign/gulpset.git"
