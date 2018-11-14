@@ -1,5 +1,5 @@
 {
-  "name": "gulpset-skeleton",
+  "name": "create-gulpset-skeleton",
   "version": "3.1.0",
   "description": "Gulp based project skeleton with modular tasks.",
   "main": "gulpfile.js",
