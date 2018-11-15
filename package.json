@@ -60,6 +60,7 @@
     "@fourdigit/sanitize-4d.css": "^7.0.4",
     "@fourdigit/scss-utilities": "^1.0.0",
     "ansi-color": "^0.2.1",
+    "commander": "^2.19.0",
     "cross-spawn": "^6.0.5",
     "fs-extra": "^7.0.1",
     "minimist": "^1.2.0",

@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
+const commander = require('commander');
 const cp = require('child_process');
 const path = require('path');
 const colors = require('ansi-colors');
@@ -7,10 +8,17 @@ const fs = require('fs-extra');
 
 const cwd = process.cwd();
 const pkgRootPath = path.resolve(__dirname, '../..');
+let projectName;
 
 const packageJson = require(path.join(pkgRootPath, 'package.json'));
-// eslint-disable-next-line no-magic-numbers
-const additionalArgs = require('minimist')(process.argv.slice(2))._;
+const program = new commander.Command(packageJson.name)
+  .version(packageJson.version)
+  .arguments('<project-directory>')
+  .usage(`${colors.green('<project-directory>')}`)
+  .action(name => {
+    projectName = name;
+  })
+  .parse(process.argv);
 
 const handleExit = () => {
   console.log('Exiting without error.');
@@ -27,10 +35,18 @@ const handleError = e => {
 process.on('SIGINT', handleExit);
 process.on('uncaughtException', handleError);
 
-function validateArgs(args) {
-  const prjName = args.length ? args[0] : undefined;
-  if (!prjName) {
-    console.error('Please specify the project name.');
+/**
+ * Validate command arguments
+ *
+ */
+function validateArgs() {
+  if (typeof projectName === 'undefined') {
+    console.error('Please specify the project directory:');
+    console.log(`  ${colors.cyan(program.name())} ${colors.green('<project-directory>')}`);
+    console.log();
+    console.log('For example:');
+    console.log(`  ${colors.cyan(program.name())} ${colors.green('my-react-app')}`);
+    console.log();
     process.exit(1);
   }
 }
@@ -103,6 +119,5 @@ function createApp(name) {
   // TODO: run `yarn install`
 }
 
-validateArgs(additionalArgs);
-const prjName = additionalArgs[0];
-createApp(prjName);
+validateArgs();
+createApp(projectName);
