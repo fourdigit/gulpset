@@ -62,7 +62,8 @@
     "ansi-color": "^0.2.1",
     "cross-spawn": "^6.0.5",
     "fs-extra": "^7.0.1",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "validate-npm-package-name": "^3.0.0"
   },
   "directories": {
     "doc": "docs"
