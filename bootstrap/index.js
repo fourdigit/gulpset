@@ -29,9 +29,9 @@ const handleExit = () => {
 };
 
 const handleError = e => {
-  console.error('ERROR! An error was encountered while executing');
+  console.error(colors.red('ERROR! An error was encountered while executing'));
   console.error(e);
-  console.log('Exiting with error.');
+  console.log(colors.red('Exiting with error.'));
   process.exit(1);
 };
 
@@ -48,7 +48,7 @@ function validateArgs() {
     console.log(`  ${colors.cyan(program.name())} ${colors.green('<project-directory>')}`);
     console.log();
     console.log('For example:');
-    console.log(`  ${colors.cyan(program.name())} ${colors.green('my-react-app')}`);
+    console.log(`  ${colors.cyan(program.name())} ${colors.green('my-gulpset-project')}`);
     console.log();
     process.exit(1);
   }
