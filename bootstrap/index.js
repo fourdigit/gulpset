@@ -8,7 +8,7 @@ const fs = require('fs-extra');
 const validateProjectName = require('validate-npm-package-name');
 
 const cwd = process.cwd();
-const pkgRootPath = path.resolve(__dirname, '../..');
+const pkgRootPath = path.resolve(__dirname, '..');
 let projectName;
 
 const packageJson = require(path.join(pkgRootPath, 'package.json'));

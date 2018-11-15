@@ -76,7 +76,7 @@
     "deployrsync": "gulp deployrsync"
   },
   "bin": {
-    "create-gulpset-skeleton": "gulpset/init/index.js"
+    "create-gulpset-skeleton": "bootstrap/index.js"
   },
   "repository": {
     "type": "git",
