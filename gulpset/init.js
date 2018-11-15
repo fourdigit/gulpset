@@ -6,9 +6,9 @@ const colors = require('ansi-colors');
 const fs = require('fs-extra');
 
 const cwd = process.cwd();
-const pkgRootPath = path.resolve(__dirname, '..');
+const pkgRootPath = path.resolve(__dirname, '../..');
 
-const packageJson = require('../package.json');
+const packageJson = require(path.join(pkgRootPath, 'package.json'));
 // eslint-disable-next-line no-magic-numbers
 const additionalArgs = require('minimist')(process.argv.slice(2))._;
 
