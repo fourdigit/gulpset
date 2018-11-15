@@ -133,27 +133,41 @@ function createApp(name) {
 
   console.log(`Creating a new gulpset project in ${colors.green(root)}.\n`);
 
-  // TODO: use `fs.readdirSync` to list files and directories
+  // TODO: generate `package.json` file for new project with devDependencies copied from gulpset-skeleton package.json
   const filesToCopy = [
-    'README.md',
+    '.editorconfig',
+    '.eslintignore',
+    '.eslintrc',
+    '.prettierignore',
+    '.prettierrc.js',
+    '.stylelintrc.js',
     'aigis_config.yml',
+    'bitbucket-pipelines.yml',
     'gulpfile.js',
     'package.json',
     'webpack.config.js',
-    'webpack.config.prod.js'
+    'webpack.config.prod.js',
   ];
   const directoriesToCopy = ['gulpset', 'src'];
-
-  for (let i = 0; i < filesToCopy.length; i++) {
-    const srcFilePath = path.join(pkgRootPath, filesToCopy[i]);
-    const dstFilePath = path.join(cwd, name, filesToCopy[i]);
-    fs.copyFileSync(srcFilePath, dstFilePath);
-  }
+  const bootstrapAssetsPath = 'bootstrap/assets';
 
   for (let i = 0; i < directoriesToCopy.length; i++) {
     const srcDirPath = path.join(pkgRootPath, directoriesToCopy[i]);
     const dstDirPath = path.join(cwd, name, directoriesToCopy[i]);
     fs.copySync(srcDirPath, dstDirPath);
+  }
+
+  // Copy files to root directory of created project
+  fs.readdirSync(path.join(pkgRootPath, bootstrapAssetsPath)).forEach(filename => {
+    const srcDirPath = path.join(pkgRootPath, bootstrapAssetsPath, filename);
+    const dstDirPath = path.join(cwd, name, filename);
+    fs.copySync(srcDirPath, dstDirPath);
+  });
+
+  for (let i = 0; i < filesToCopy.length; i++) {
+    const srcFilePath = path.join(pkgRootPath, filesToCopy[i]);
+    const dstFilePath = path.join(cwd, name, filesToCopy[i]);
+    fs.copyFileSync(srcFilePath, dstFilePath);
   }
 
   console.log(`Success! Created ${appName} at ${path.join(root)}`);
