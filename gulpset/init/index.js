@@ -48,6 +48,21 @@ function checkAppName(name, dependencies) {
 }
 
 /**
+ * Validate the path of the to-be-created-project
+ *
+ * @param {string} projectName
+ */
+function checkProjectPath(projectName) {
+  const pathOfNewPrj = path.join(cwd, projectName);
+  if (fs.existsSync(pathOfNewPrj) && fs.readdirSync(pathOfNewPrj).length > 0) {
+    console.error(
+      `ERROR! Directory ${projectName} already exist and it's not empty. Please remove it before proceeding.`
+    );
+    process.exit(1);
+  }
+}
+
+/**
  * Create new project `name` using `gulpset-skeleton`
  *
  * @param {*} name
@@ -58,11 +73,8 @@ function createApp(name) {
 
   checkAppName(appName, [...Object.keys(packageJson.dependencies), ...Object.keys(packageJson.devDependencies)]);
 
-  const pathOfNewPrj = path.join(cwd, name);
-  if (fs.existsSync(pathOfNewPrj) && fs.readdirSync(pathOfNewPrj).length > 0) {
-    console.error(`ERROR! Directory ${name} already exist and it's not empty. Please remove it before proceeding.`);
-    process.exit(1);
-  }
+  checkProjectPath(name);
+
   fs.ensureDirSync(name);
 
   // TODO: use `fs.readdirSync` to list files and directories
