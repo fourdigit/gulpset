@@ -12,6 +12,8 @@ const pkgRootPath = path.resolve(__dirname, '../..');
 let projectName;
 
 const packageJson = require(path.join(pkgRootPath, 'package.json'));
+
+// Parse command
 const program = new commander.Command(packageJson.name)
   .version(packageJson.version)
   .arguments('<project-directory>')
@@ -117,7 +119,7 @@ function checkProjectPath(projectName) {
 /**
  * Create new project `name` using `gulpset-skeleton`
  *
- * @param {*} name
+ * @param {string} name
  */
 function createApp(name) {
   const root = path.resolve(name);
@@ -128,6 +130,8 @@ function createApp(name) {
   checkProjectPath(name);
 
   fs.ensureDirSync(name);
+
+  console.log(`Creating a new gulpset project in ${colors.green(root)}.\n`);
 
   // TODO: use `fs.readdirSync` to list files and directories
   const filesToCopy = [
@@ -152,6 +156,7 @@ function createApp(name) {
     fs.copySync(srcDirPath, dstDirPath);
   }
 
+  console.log(`Success! Created ${appName} at ${path.join(root)}`);
   // TODO: run `yarn install`
 }
 
