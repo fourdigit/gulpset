@@ -57,8 +57,10 @@ function createApp(name) {
   const appName = path.basename(root);
 
   checkAppName(appName, [...Object.keys(packageJson.dependencies), ...Object.keys(packageJson.devDependencies)]);
-  if (fs.existsSync(path.join(cwd, name))) {
-    console.error(`ERROR! Directory ${name} already exist. Please remove it before proceeding.`);
+
+  const pathOfNewPrj = path.join(cwd, name);
+  if (fs.existsSync(pathOfNewPrj) && fs.readdirSync(pathOfNewPrj).length > 0) {
+    console.error(`ERROR! Directory ${name} already exist and it's not empty. Please remove it before proceeding.`);
     process.exit(1);
   }
   fs.ensureDirSync(name);
