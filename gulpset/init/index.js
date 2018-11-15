@@ -5,6 +5,7 @@ const cp = require('child_process');
 const path = require('path');
 const colors = require('ansi-colors');
 const fs = require('fs-extra');
+const validateProjectName = require('validate-npm-package-name');
 
 const cwd = process.cwd();
 const pkgRootPath = path.resolve(__dirname, '../..');
@@ -52,15 +53,50 @@ function validateArgs() {
 }
 
 /**
- * Validate app name
+ * Print warnings and errors to console
+ *
+ * @param {Array<string>} results array of warning and error messages
+ */
+function printValidationResults(results) {
+  if (typeof results !== 'undefined') {
+    results.forEach(error => {
+      console.error(colors.red(`  *  ${error}`));
+    });
+  }
+}
+
+/**
+ * Validate project name
  * Exit with code 1 if name is invalid
  *
- * @param {string} name name of the app
+ * @param {string} name name of the project
  * @param {Array<string>} dependencies list of dependencies of `create-gulpset-skeleton`
  */
-function checkAppName(name, dependencies) {
-  // TODO: validate package name base on npm naming rules
+function checkProjectName(name, dependencies) {
+  // Validate project name against NPM naming restriction
   // https://github.com/npm/cli/blob/latest/doc/files/package.json.md#name
+  const validationResult = validateProjectName(name);
+  if (!validationResult.validForNewPackages) {
+    console.error(`Could not create a project called ${colors.red(`"${name}"`)} because of npm naming restrictions:`);
+    printValidationResults(validationResult.errors);
+    printValidationResults(validationResult.warnings);
+    process.exit(1);
+  }
+
+  // Check if project name conflicts with existing NPM packages
+  if (dependencies.indexOf(name) >= 0) {
+    console.error(
+      colors.red(`We cannot create a project called `) +
+        colors.green(name) +
+        colors.red(
+          ` because a dependency with the same name exists.\n` +
+            `Due to the way npm works, the following names are not allowed:\n\n`
+        ) +
+        colors.cyan(dependencies.map(depName => `  ${depName}`).join('\n')) +
+        colors.red('\n\nPlease choose a different project name.')
+    );
+    process.exit(1);
+  }
 }
 
 /**
@@ -87,7 +123,7 @@ function createApp(name) {
   const root = path.resolve(name);
   const appName = path.basename(root);
 
-  checkAppName(appName, [...Object.keys(packageJson.dependencies), ...Object.keys(packageJson.devDependencies)]);
+  checkProjectName(appName, [...Object.keys(packageJson.dependencies), ...Object.keys(packageJson.devDependencies)]);
 
   checkProjectPath(name);
 
