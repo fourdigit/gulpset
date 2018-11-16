@@ -5,6 +5,7 @@ const cp = require('child_process');
 const path = require('path');
 const colors = require('ansi-colors');
 const fs = require('fs-extra');
+const os = require('os');
 const validateProjectName = require('validate-npm-package-name');
 
 const cwd = process.cwd();
@@ -118,6 +119,34 @@ function checkProjectPath(projectName) {
 }
 
 /**
+ * Generate the `package.json` file for the new project
+ *
+ * @param {string} prjName name of the new project
+ * @returns new package.json object
+ */
+function generatePackageJson(prjName) {
+
+  let newPkgJson = {};
+  const dependencies = [
+    '@fourdigit/sanitize-4d.css',
+    '@fourdigit/scss-utilities',
+  ];
+
+  newPkgJson.name = prjName;
+  newPkgJson.version = '0.1.0';
+  newPkgJson.description = '';
+  newPkgJson.main = packageJson.main;
+  newPkgJson.scripts = packageJson.scripts;
+  newPkgJson.devDependencies = packageJson.devDependencies;
+  newPkgJson.dependencies = {};
+  dependencies.forEach(depName => {
+    newPkgJson.dependencies[depName] = packageJson.dependencies[depName];
+  });
+
+  return newPkgJson;
+}
+
+/**
  * Create new project `name` using `gulpset-skeleton`
  *
  * @param {string} name
@@ -136,7 +165,7 @@ function createApp(name) {
 
   console.log(`Creating a new gulpset project in ${colors.green(root)}.\n`);
 
-  // TODO: generate `package.json` file for new project with devDependencies copied from gulpset-skeleton package.json
+  // Copy core files and templates
   const filesToCopy = [
     '.editorconfig',
     '.eslintignore',
@@ -147,7 +176,6 @@ function createApp(name) {
     'aigis_config.yml',
     'bitbucket-pipelines.yml',
     'gulpfile.js',
-    'package.json',
     'webpack.config.js',
     'webpack.config.prod.js',
   ];
@@ -172,6 +200,13 @@ function createApp(name) {
     const dstFilePath = path.join(newPrjRootPath, filesToCopy[i]);
     fs.copyFileSync(srcFilePath, dstFilePath);
   }
+
+  // Create new `package.json`
+  const newPkgJson = generatePackageJson(name);
+  fs.writeFileSync(
+    path.join(newPrjRootPath, 'package.json'),
+    JSON.stringify(newPkgJson, null, 2) + os.EOL
+  );
 
   console.log(`Success! Created ${appName} at ${path.join(root)}`);
   // TODO: run `yarn install`
