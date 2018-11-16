@@ -15,11 +15,17 @@ Gulp based project skeleton with modular tasks.
 - browser-sync (dev server)
 - rsync (deploy)
 
+## creating project
+```
+yarn global add create-gulpset-skeleton
+create-gulpset-skeleton my-app
+```
+
 ## starting development
 
-1. download this repo from [releases](https://github.com/fourdigit/gulpset/releases)
-2. `yarn`
-3. `yarn start`
+```
+yarn start
+```
 
 ## want to generate production build(minified)
 
