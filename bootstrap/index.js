@@ -2,6 +2,7 @@
 /* eslint-disable no-console */
 const commander = require('commander');
 const cp = require('child_process');
+const crossSpawn = require('cross-spawn');
 const path = require('path');
 const colors = require('ansi-colors');
 const fs = require('fs-extra');
@@ -208,8 +209,11 @@ function createApp(name) {
     JSON.stringify(newPkgJson, null, 2) + os.EOL
   );
 
+  crossSpawn.sync('yarn', ['install', '--cwd', newPrjRootPath], {
+    stdio: 'inherit',
+  });
+
   console.log(`Success! Created ${appName} at ${path.join(root)}`);
-  // TODO: run `yarn install`
 }
 
 validateArgs();
