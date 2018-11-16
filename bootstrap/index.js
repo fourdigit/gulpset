@@ -8,6 +8,7 @@ const fs = require('fs-extra');
 const validateProjectName = require('validate-npm-package-name');
 
 const cwd = process.cwd();
+var newPrjRootPath; // Root path of the new project
 const pkgRootPath = path.resolve(__dirname, '..');
 let projectName;
 
@@ -129,6 +130,8 @@ function createApp(name) {
 
   checkProjectPath(name);
 
+  newPrjRootPath = path.join(cwd, name);
+
   fs.ensureDirSync(name);
 
   console.log(`Creating a new gulpset project in ${colors.green(root)}.\n`);
@@ -153,20 +156,20 @@ function createApp(name) {
 
   for (let i = 0; i < directoriesToCopy.length; i++) {
     const srcDirPath = path.join(pkgRootPath, directoriesToCopy[i]);
-    const dstDirPath = path.join(cwd, name, directoriesToCopy[i]);
+    const dstDirPath = path.join(newPrjRootPath, directoriesToCopy[i]);
     fs.copySync(srcDirPath, dstDirPath);
   }
 
   // Copy files to root directory of created project
   fs.readdirSync(path.join(pkgRootPath, bootstrapAssetsPath)).forEach(filename => {
     const srcDirPath = path.join(pkgRootPath, bootstrapAssetsPath, filename);
-    const dstDirPath = path.join(cwd, name, filename);
+    const dstDirPath = path.join(newPrjRootPath, filename);
     fs.copySync(srcDirPath, dstDirPath);
   });
 
   for (let i = 0; i < filesToCopy.length; i++) {
     const srcFilePath = path.join(pkgRootPath, filesToCopy[i]);
-    const dstFilePath = path.join(cwd, name, filesToCopy[i]);
+    const dstFilePath = path.join(newPrjRootPath, filesToCopy[i]);
     fs.copyFileSync(srcFilePath, dstFilePath);
   }
 
