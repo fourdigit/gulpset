@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
 const commander = require('commander');
-const cp = require('child_process');
 const crossSpawn = require('cross-spawn');
 const path = require('path');
 const colors = require('ansi-colors');
