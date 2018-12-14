@@ -10,6 +10,8 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "@fourdigit/eslint-config-fourdigit": "^1.0.4",
+    "@types/react": "^16.4.18",
+    "@types/react-dom": "^16.0.9",
     "autoprefixer": "^9.1.5",
     "awesome-typescript-loader": "^5.2.1",
     "babel-loader": "^8.0.4",
@@ -68,8 +70,6 @@
   "dependencies": {
     "@fourdigit/sanitize-4d.css": "^7.0.4",
     "@fourdigit/scss-utilities": "^1.0.0",
-    "@types/react": "^16.4.18",
-    "@types/react-dom": "^16.0.9",
     "ansi-color": "^0.2.1",
     "commander": "^2.19.0",
     "cross-spawn": "^6.0.5",

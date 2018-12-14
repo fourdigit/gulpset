@@ -9,7 +9,7 @@ const os = require('os');
 const validateProjectName = require('validate-npm-package-name');
 
 const cwd = process.cwd();
-var newPrjRootPath; // Root path of the new project
+let newPrjRootPath; // Root path of the new project
 const pkgRootPath = path.resolve(__dirname, '..');
 let projectName;
 
@@ -125,12 +125,8 @@ function checkProjectPath(projectName) {
  * @returns new package.json object
  */
 function generatePackageJson(prjName) {
-
-  let newPkgJson = {};
-  const dependencies = [
-    '@fourdigit/sanitize-4d.css',
-    '@fourdigit/scss-utilities',
-  ];
+  const newPkgJson = {};
+  const dependencies = ['@fourdigit/sanitize-4d.css', '@fourdigit/scss-utilities'];
 
   newPkgJson.name = prjName;
   newPkgJson.version = '0.1.0';
@@ -167,19 +163,25 @@ function createApp(name) {
 
   // Copy core files and templates
   const filesToCopy = [
+    '.gitignore',
+    '.browserslistrc',
     '.editorconfig',
     '.eslintignore',
     '.eslintrc',
     '.prettierignore',
     '.prettierrc.js',
     '.stylelintrc.js',
-    'aigis_config.yml',
+    '.travis.yml',
     'bitbucket-pipelines.yml',
+    'doczrc.js',
     'gulpfile.js',
+    'tsconfig.json',
     'webpack.config.js',
+    'webpack.config.jsx.js',
     'webpack.config.prod.js',
+    'yarn.lock'
   ];
-  const directoriesToCopy = ['gulpset', 'src'];
+  const directoriesToCopy = ['.vscode', 'gulpset', 'src'];
   const bootstrapAssetsPath = 'bootstrap/assets';
 
   for (let i = 0; i < directoriesToCopy.length; i++) {
@@ -203,13 +205,10 @@ function createApp(name) {
 
   // Create new `package.json`
   const newPkgJson = generatePackageJson(name);
-  fs.writeFileSync(
-    path.join(newPrjRootPath, 'package.json'),
-    JSON.stringify(newPkgJson, null, 2) + os.EOL
-  );
+  fs.writeFileSync(path.join(newPrjRootPath, 'package.json'), JSON.stringify(newPkgJson, null, 2) + os.EOL);
 
   crossSpawn.sync('yarn', ['install', '--cwd', newPrjRootPath], {
-    stdio: 'inherit',
+    stdio: 'inherit'
   });
 
   console.log(`Success! Created ${appName} at ${path.join(root)}`);
