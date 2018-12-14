@@ -1,33 +1,6 @@
-# gulpset
+This project was bootstrapped with [@fourdigit/gulpset](https://github.com/fourdigit/gulpset).
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/fourdigit/gulpset.svg)](https://greenkeeper.io/)
-
-Gulp based project skeleton with modular tasks.
-
-## tech stack
-
-- Node.js (v8 or later is supported)
-- gulp v4 (task-runner)
-- webpack + babel + eslint (JS)
-- Scss + PostCSS + stylelint (CSS)
-- ejs (HTML)
-- prettier (beatutifier)
-- browser-sync (dev server)
-- rsync (deploy)
-
-## creating project
-```
-yarn global add create-gulpset-skeleton
-create-gulpset-skeleton my-app
-```
-
-## starting development
-
-```
-yarn start
-```
-
-## want to generate production build(minified)
+## To generate production build(minified)
 
 1. `yarn build:prod`
 

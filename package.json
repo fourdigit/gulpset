@@ -1,5 +1,5 @@
 {
-  "name": "gulpset-skeleton",
+  "name": "create-gulpset-skeleton",
   "version": "4.0.0-rc0",
   "description": "Gulp based project skeleton with modular tasks.",
   "main": "gulpfile.js",
@@ -69,7 +69,13 @@
     "@fourdigit/sanitize-4d.css": "^7.0.4",
     "@fourdigit/scss-utilities": "^1.0.0",
     "@types/react": "^16.4.18",
-    "@types/react-dom": "^16.0.9"
+    "@types/react-dom": "^16.0.9",
+    "ansi-color": "^0.2.1",
+    "commander": "^2.19.0",
+    "cross-spawn": "^6.0.5",
+    "fs-extra": "^7.0.1",
+    "minimist": "^1.2.0",
+    "validate-npm-package-name": "^3.0.0"
   },
   "directories": {
     "doc": "docs"
@@ -79,6 +85,9 @@
     "build:prod": "gulp production",
     "eslint:fix": "yarn eslint --fix",
     "deployrsync": "gulp deployrsync"
+  },
+  "bin": {
+    "create-gulpset-skeleton": "bootstrap/index.js"
   },
   "repository": {
     "type": "git",
