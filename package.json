@@ -36,7 +36,7 @@
     "gulp-rsync": "^0.0.8",
     "gulp-sass": "^4.0.1",
     "gulp-sass-glob": "^1.0.9",
-    "gulp-sourcemaps": "^2.6.4",
+    "gulp-sourcemaps": "^2.6.5",
     "gulp-template": "^5.0.0",
     "gulp-util": "^3.0.8",
     "gulplog": "^1.0.0",
