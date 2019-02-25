@@ -57,7 +57,7 @@
     "webpack-stream": "^5.1.1"
   },
   "dependencies": {
-    "@fourdigit/sanitize-4d.css": "^7.0.4",
+    "@fourdigit/sanitize-4d.css": "^8.0.0",
     "@fourdigit/scss-utilities": "^1.0.0"
   },
   "directories": {
