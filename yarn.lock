@@ -602,10 +602,10 @@
     eslint-plugin-react "^7.11.1"
     prettier "^1.14.2"
 
-"@fourdigit/sanitize-4d.css@^7.0.4":
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/@fourdigit/sanitize-4d.css/-/sanitize-4d.css-7.0.4.tgz#9e6b129620a47f5201627bd6c4ade34627fcfe6e"
-  integrity sha512-t/vDje8HJcpYe0Mzn0AFKoSKQ216mKVf6TU+VXKCnVcTorulH2lbphSw/H4caf9uoj0yQxJBe6kISopr8eqMaA==
+"@fourdigit/sanitize-4d.css@^8.0.0":
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/@fourdigit/sanitize-4d.css/-/sanitize-4d.css-8.0.0.tgz#5c6eb930d801f4d35391d03f286c6a66fb062758"
+  integrity sha512-Bk6xTG34T9k+9KQFX/b3KpLehdWMC/hzS1dYNBsSz0E2DXTt2GUIV7pwHUN51HzdKRkXlEv+4iXXAMjFGc9iKg==
 
 "@fourdigit/scss-utilities@^1.0.0":
   version "1.0.0"
