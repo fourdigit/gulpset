@@ -17,7 +17,7 @@
     "event-stream": "^4.0.0",
     "fast-csv": "^2.4.1",
     "glob": "^7.1.2",
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.1",
     "gulp-aigis": "https://github.com/TakuyaAbe/gulp-aigis#v1.3.1",
     "gulp-changed": "^3.2.0",
     "gulp-ejs": "^3.2.0",
