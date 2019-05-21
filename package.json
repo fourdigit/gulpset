@@ -6,7 +6,7 @@
   "author": "FOURDIGIT Inc., Nobuyuki NISHIGAKI",
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
+    "@babel/core": "^7.4.5",
     "@babel/preset-env": "^7.1.0",
     "@fourdigit/eslint-config-fourdigit": "^1.0.4",
     "autoprefixer": "^9.1.5",
