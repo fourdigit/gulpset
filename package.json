@@ -23,7 +23,7 @@
     "gulp-ejs": "^3.2.0",
     "gulp-eslint": "^5.0.0",
     "gulp-front-matter": "^1.3.0",
-    "gulp-if": "^2.0.2",
+    "gulp-if": "^3.0.0",
     "gulp-imagemin": "^4.1.0",
     "gulp-jsbeautifier": "^2.1.2",
     "gulp-layout": "0.0.4",
