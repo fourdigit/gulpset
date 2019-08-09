@@ -27,7 +27,7 @@
     "gulp-imagemin": "^4.1.0",
     "gulp-jsbeautifier": "^2.1.2",
     "gulp-layout": "0.0.4",
-    "gulp-load-plugins": "^1.5.0",
+    "gulp-load-plugins": "^2.0.1",
     "gulp-markdown": "^3.0.0",
     "gulp-plumber": "^1.2.0",
     "gulp-postcss": "^8.0.0",
