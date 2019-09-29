@@ -13,7 +13,7 @@
     "babel-loader": "^8.0.4",
     "browser-sync": "^2.24.7",
     "del": "^3.0.0",
-    "eslint": "^5.5.0",
+    "eslint": "^6.5.0",
     "event-stream": "^4.0.0",
     "fast-csv": "^2.4.1",
     "glob": "^7.1.2",
