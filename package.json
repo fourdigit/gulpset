@@ -45,7 +45,7 @@
     "node-sass-package-importer": "^5.2.0",
     "postcss-reporter": "^6.0.0",
     "postcss-sprites": "^4.2.1",
-    "prettier": "^1.14.2",
+    "prettier": "^1.19.1",
     "prettier-stylelint": "^0.4.2",
     "stylelint": "^9.7.1",
     "stylelint-config-rational-order": "^0.0.2",
