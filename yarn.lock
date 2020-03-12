@@ -583,6 +583,29 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@fast-csv/format@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@fast-csv/format/-/format-4.1.2.tgz#68abbfa2f2a56055336de20f0f6dae6ca1fa4bd9"
+  integrity sha512-ERW7QuIEYa/eJArjzEKWe8Sdj9aNBLDjMfZw+EpcIb9CFOMz7SNZl8ElWOjcUU8Gj088TerBSGvUoCZN0SoXig==
+  dependencies:
+    lodash.escaperegexp "^4.1.2"
+    lodash.isboolean "^3.0.3"
+    lodash.isequal "^4.5.0"
+    lodash.isfunction "^3.0.9"
+    lodash.isnil "^4.0.0"
+
+"@fast-csv/parse@^4.1.2":
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/@fast-csv/parse/-/parse-4.1.2.tgz#22a9d96143a072de7ffba74bcf7ae8062e3d283f"
+  integrity sha512-GmgHo1EHB5/M2v3tAj83l77PxGCxxYvx0s/PoWM/fp5PrS8ECtX0THKsuJ0jO3+BkpaHhX3/UZFOBnfcEw1FkQ==
+  dependencies:
+    lodash.escaperegexp "^4.1.2"
+    lodash.groupby "^4.6.0"
+    lodash.isfunction "^3.0.9"
+    lodash.isnil "^4.0.0"
+    lodash.isundefined "^3.0.1"
+    lodash.uniq "^4.5.0"
+
 "@fourdigit/editorconfig-config-fourdigit@^1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@fourdigit/editorconfig-config-fourdigit/-/editorconfig-config-fourdigit-1.0.1.tgz#0322f27fd9f9fd7820e6244ff4f5d4a2d5d4f283"
@@ -662,6 +685,11 @@
   integrity sha512-0QEFiR8ljcHp9bAbWxecjVRuAMr16ivPiGOw6KFQBVrVd0RQIcM3xKdRisH2EDWgVWujiYtHwhSkSUoAAGzH7Q==
   dependencies:
     commander "*"
+
+"@types/node@^12.12.17":
+  version "12.12.29"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.12.29.tgz#46275f028b4e463b9ac5fefc1d08bc66cc193f25"
+  integrity sha512-yo8Qz0ygADGFptISDj3pOC9wXfln/5pQaN/ysDIzOaAWXt73cNHmtEC8zSO2Y+kse/txmwIAJzkYZ5fooaS5DQ==
 
 "@types/pug@^2.0.4":
   version "2.0.4"
@@ -1077,14 +1105,6 @@ argparse@^1.0.7:
   dependencies:
     sprintf-js "~1.0.2"
 
-arguments-extended@~0.0.3:
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/arguments-extended/-/arguments-extended-0.0.3.tgz#6107e4917d0eb6f0a4dd66320fc15afc72ef4946"
-  integrity sha1-YQfkkX0OtvCk3WYyD8Fa/HLvSUY=
-  dependencies:
-    extended "~0.0.3"
-    is-extended "~0.0.8"
-
 arr-diff@^1.0.1:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/arr-diff/-/arr-diff-1.1.0.tgz#687c32758163588fef7de7b36fabe495eb1a399a"
@@ -1143,15 +1163,6 @@ array-each@^1.0.0, array-each@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/array-each/-/array-each-1.0.1.tgz#a794af0c05ab1752846ee753a1f211a05ba0c44f"
   integrity sha1-p5SvDAWrF1KEbudTofIRoFugxE8=
-
-array-extended@~0.0.3, array-extended@~0.0.4, array-extended@~0.0.5:
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/array-extended/-/array-extended-0.0.11.tgz#d7144ae748de93ca726f121009dbff1626d164bd"
-  integrity sha1-1xRK50jek8pybxIQCdv/FibRZL0=
-  dependencies:
-    arguments-extended "~0.0.3"
-    extended "~0.0.3"
-    is-extended "~0.0.3"
 
 array-find-index@^1.0.1:
   version "1.0.2"
@@ -2945,15 +2956,6 @@ data-uri-to-buffer@0.0.3:
   resolved "https://registry.yarnpkg.com/data-uri-to-buffer/-/data-uri-to-buffer-0.0.3.tgz#18ae979a6a0ca994b0625853916d2662bbae0b1a"
   integrity sha1-GK6XmmoMqZSwYlhTkW0mYruuCxo=
 
-date-extended@~0.0.3:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/date-extended/-/date-extended-0.0.6.tgz#23802d57dd1bf7818813fe0c32e851a86da267c9"
-  integrity sha1-I4AtV90b94GIE/4MMuhRqG2iZ8k=
-  dependencies:
-    array-extended "~0.0.3"
-    extended "~0.0.3"
-    is-extended "~0.0.3"
-
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
@@ -3046,11 +3048,6 @@ decamelize@^2.0.0:
   integrity sha512-Ikpp5scV3MSYxY39ymh45ZLEecsTdv/Xj2CaQfI8RLMuwi7XvjX9H/fhraiSuU+C5w5NTDu4ZU72xNiZnurBPg==
   dependencies:
     xregexp "4.0.0"
-
-declare.js@~0.0.4:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/declare.js/-/declare.js-0.0.8.tgz#0478adff9564c004f51df73d8bc134019d28dcde"
-  integrity sha1-BHit/5VkwAT1Hfc9i8E0AZ0o3N4=
 
 decode-uri-component@^0.2.0:
   version "0.2.0"
@@ -4043,20 +4040,6 @@ extend@^3.0.0, extend@~3.0.1, extend@~3.0.2:
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
   integrity sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==
 
-extended@0.0.6, extended@~0.0.3:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/extended/-/extended-0.0.6.tgz#7fb8bf7b9dae397586e48570acfd642c78e50669"
-  integrity sha1-f7i/e52uOXWG5IVwrP1kLHjlBmk=
-  dependencies:
-    extender "~0.0.5"
-
-extender@~0.0.5:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/extender/-/extender-0.0.10.tgz#589c07482be61a1460b6d81f9c24aa67e8f324cd"
-  integrity sha1-WJwHSCvmGhRgttgfnCSqZ+jzJM0=
-  dependencies:
-    declare.js "~0.0.4"
-
 external-editor@^3.0.0:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/external-editor/-/external-editor-3.0.3.tgz#5866db29a97826dbe4bf3afd24070ead9ea43a27"
@@ -4126,15 +4109,14 @@ fancy-log@^1.1.0, fancy-log@^1.2.0, fancy-log@^1.3.2:
     color-support "^1.1.3"
     time-stamp "^1.0.0"
 
-fast-csv@^2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/fast-csv/-/fast-csv-2.4.1.tgz#bd7dd268391f729367b59445b8dd0ad026881b26"
-  integrity sha1-vX3SaDkfcpNntZRFuN0K0CaIGyY=
+fast-csv@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/fast-csv/-/fast-csv-4.1.2.tgz#207d5708dcf2559c63c7b6b96541c5ad1f59986e"
+  integrity sha512-meRpUU2izwIjn8PMJFe+73dN0yrBrs27CZzMKycrlUJU0PUdcbbS8NalZFfuVHWirhSBFCSeTMT6Kk61NOQhVA==
   dependencies:
-    extended "0.0.6"
-    is-extended "0.0.10"
-    object-extended "0.0.7"
-    string-extended "0.0.8"
+    "@fast-csv/format" "^4.1.2"
+    "@fast-csv/parse" "^4.1.2"
+    "@types/node" "^12.12.17"
 
 fast-deep-equal@^1.0.0:
   version "1.1.0"
@@ -5912,13 +5894,6 @@ is-extendable@^1.0.1:
   dependencies:
     is-plain-object "^2.0.4"
 
-is-extended@0.0.10, is-extended@~0.0.3, is-extended@~0.0.8:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/is-extended/-/is-extended-0.0.10.tgz#244e140df75bb1c9a3106f412ff182fb534a6d62"
-  integrity sha1-JE4UDfdbscmjEG9BL/GC+1NKbWI=
-  dependencies:
-    extended "~0.0.3"
-
 is-extglob@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/is-extglob/-/is-extglob-1.0.0.tgz#ac468177c4943405a092fc8f29760c6ffc6206c0"
@@ -6937,6 +6912,11 @@ lodash.escape@^3.0.0:
   dependencies:
     lodash._root "^3.0.0"
 
+lodash.escaperegexp@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/lodash.escaperegexp/-/lodash.escaperegexp-4.1.2.tgz#64762c48618082518ac3df4ccf5d5886dae20347"
+  integrity sha1-ZHYsSGGAglGKw99Mz11YhtriA0c=
+
 lodash.every@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/lodash.every/-/lodash.every-2.4.1.tgz#228ce585e6f490c0329805b8fc0facd415b83b05"
@@ -6962,6 +6942,11 @@ lodash.forown@~2.4.1:
     lodash._objecttypes "~2.4.1"
     lodash.keys "~2.4.1"
 
+lodash.groupby@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.groupby/-/lodash.groupby-4.6.0.tgz#0b08a1dcf68397c397855c3239783832df7403d1"
+  integrity sha1-Cwih3PaDl8OXhVwyOXg4Mt90A9E=
+
 lodash.identity@~2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/lodash.identity/-/lodash.identity-2.4.1.tgz#6694cffa65fef931f7c31ce86c74597cf560f4f1"
@@ -6977,7 +6962,12 @@ lodash.isarray@^3.0.0:
   resolved "https://registry.yarnpkg.com/lodash.isarray/-/lodash.isarray-3.0.4.tgz#79e4eb88c36a8122af86f844aa9bcd851b5fbb55"
   integrity sha1-eeTriMNqgSKvhvhEqpvNhRtfu1U=
 
-lodash.isequal@^4.0.0:
+lodash.isboolean@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/lodash.isboolean/-/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
+  integrity sha1-bC4XHbKiV82WgC/UOwGyDV9YcPY=
+
+lodash.isequal@^4.0.0, lodash.isequal@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.isequal/-/lodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
   integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
@@ -6987,10 +6977,20 @@ lodash.isfinite@^3.3.2:
   resolved "https://registry.yarnpkg.com/lodash.isfinite/-/lodash.isfinite-3.3.2.tgz#fb89b65a9a80281833f0b7478b3a5104f898ebb3"
   integrity sha1-+4m2WpqAKBgz8LdHizpRBPiY67M=
 
+lodash.isfunction@^3.0.9:
+  version "3.0.9"
+  resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-3.0.9.tgz#06de25df4db327ac931981d1bdb067e5af68d051"
+  integrity sha512-AirXNj15uRIMMPihnkInB4i3NHeb4iBtNg9WRWuK2o31S+ePwwNmDPaTL3o7dTJ+VXNZim7rFs4rxN4YU1oUJw==
+
 lodash.isfunction@~2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/lodash.isfunction/-/lodash.isfunction-2.4.1.tgz#2cfd575c73e498ab57e319b77fa02adef13a94d1"
   integrity sha1-LP1XXHPkmKtX4xm3f6Aq3vE6lNE=
+
+lodash.isnil@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/lodash.isnil/-/lodash.isnil-4.0.0.tgz#49e28cd559013458c814c5479d3c663a21bfaa6c"
+  integrity sha1-SeKM1VkBNFjIFMVHnTxmOiG/qmw=
 
 lodash.isobject@~2.4.1:
   version "2.4.1"
@@ -7008,6 +7008,11 @@ lodash.istypedarray@^3.0.0:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/lodash.istypedarray/-/lodash.istypedarray-3.0.6.tgz#c9a477498607501d8e8494d283b87c39281cef62"
   integrity sha1-yaR3SYYHUB2OhJTSg7h8OSgc72I=
+
+lodash.isundefined@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/lodash.isundefined/-/lodash.isundefined-3.0.1.tgz#23ef3d9535565203a66cefd5b830f848911afb48"
+  integrity sha1-I+89lTVWUgOmbO/VuDD4SJEa+0g=
 
 lodash.keys@^3.0.0:
   version "3.1.2"
@@ -7109,6 +7114,11 @@ lodash.templatesettings@^3.0.0:
   dependencies:
     lodash._reinterpolate "^3.0.0"
     lodash.escape "^3.0.0"
+
+lodash.uniq@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
+  integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
 lodash@^3.5.0:
   version "3.10.1"
@@ -8033,15 +8043,6 @@ object-copy@^0.1.0:
     copy-descriptor "^0.1.0"
     define-property "^0.2.5"
     kind-of "^3.0.3"
-
-object-extended@0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/object-extended/-/object-extended-0.0.7.tgz#84fd23f56b15582aeb3e88b05cb55d2432d68a33"
-  integrity sha1-hP0j9WsVWCrrPoiwXLVdJDLWijM=
-  dependencies:
-    array-extended "~0.0.4"
-    extended "~0.0.3"
-    is-extended "~0.0.3"
 
 object-hash@^1.2.0:
   version "1.3.0"
@@ -10613,16 +10614,6 @@ stream-throttle@^0.1.3:
   dependencies:
     commander "^2.2.0"
     limiter "^1.0.5"
-
-string-extended@0.0.8:
-  version "0.0.8"
-  resolved "https://registry.yarnpkg.com/string-extended/-/string-extended-0.0.8.tgz#741957dff487b0272a79eec5a44f239ee6f17ccd"
-  integrity sha1-dBlX3/SHsCcqee7FpE8jnubxfM0=
-  dependencies:
-    array-extended "~0.0.5"
-    date-extended "~0.0.3"
-    extended "~0.0.3"
-    is-extended "~0.0.3"
 
 string-width@^1.0.1, string-width@^1.0.2:
   version "1.0.2"
