@@ -47,7 +47,7 @@
     "postcss-sprites": "^4.2.1",
     "prettier": "^1.14.2",
     "prettier-stylelint": "^0.4.2",
-    "stylelint": "^9.7.1",
+    "stylelint": "^13.3.0",
     "stylelint-config-rational-order": "^0.0.2",
     "stylelint-config-standard": "^18.2.0",
     "stylelint-scss": "^3.3.2",
