@@ -50,7 +50,7 @@
     "stylelint": "^9.7.1",
     "stylelint-config-rational-order": "^0.0.2",
     "stylelint-config-standard": "^18.2.0",
-    "stylelint-scss": "^3.3.2",
+    "stylelint-scss": "^3.17.0",
     "webpack": "^4.20.2",
     "webpack-dev-middleware": "^3.4.0",
     "webpack-hot-middleware": "^2.24.2",
